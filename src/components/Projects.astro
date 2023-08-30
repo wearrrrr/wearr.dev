@@ -1,21 +1,11 @@
 ---
-type Project = {
-    name: string;
-    description: string;
-    links: {
-        github?: string;
-        website?: string;
-    }
-}
 
-const { project } = Astro.props;
 import projs from "../projects.json"
 
 ---
 
 {Object.keys(projs).map((key) => {
     const project = projs[key];
-    if (project == "links") return;
     return (
       <div class={"project " + key}>
         <div class="project-title">{project.name}</div>

@@ -1,0 +1,24 @@
+{
+    "nebula": {
+        "name": "Nebula Services",
+        "description": "A team of developers that work on various projects, including Nebula Web, Sylo, and Dynamic!",
+        "links": [
+            {
+                "type": "github",
+                "url": "https://github.com/consumet",
+                "link": "fa-solid fa-link"
+            }
+        ]
+    },
+    "consumet": {
+        "name": "Consumet",
+        "description": "A high level API for discovering Movies, TV, Anime, and Books.",
+        "links": [
+            {
+                "type": "github",
+                "url": "https://github.com/NebulaServices",
+                "link": "fa-solid fa-link"
+            }
+        ]
+    }
+}

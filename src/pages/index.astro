@@ -2,6 +2,7 @@
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
 import Projects from "../components/Projects.astro";
+import Teams from "../components/Teams.astro";
 ---
 
 <Layout title="wearr.dev">
@@ -9,14 +10,14 @@ import Projects from "../components/Projects.astro";
   <Navbar></Navbar>
   <main>
     <div class="main-header-content">
-      <h1 class="first-title" id="first-title">Welcome to wearr.dev!</h1>
-      <h2 class="second-title" id="second-title">My name is Rowan and I am a fullstack web developer, primarily specializing in backends. </h2>
+      <div class="blur"></div>
+      <h1 class="first-title" id="first-title">Hi. My name is <span>wearr</span>, and I'm a Web Developer.</h1>
     </div>
   
     <div class="main-about-me">
       About Me:
       <div class="main-about-me-paragraph">
-          My name is Rowan, but I commonly go by wearr in non-professional environments. I currently work with <a target="_blank" rel="noreferrer noopener" href="https://github.com/NebulaServices">Nebula Services</a> and I am a student and an aspiring web developer, and so far I have experience in
+          My real name is Rowan, but I commonly go by wearr in non-professional environments. I currently work with <a class="link" target="_blank" rel="noreferrer noopener" href="https://github.com/NebulaServices">Nebula Services</a>. I am a student and an aspiring web developer, and so far I have experience in
           <ol class="main-about-me-language-list">
             <li>HTML</li>
             <li>CSS</li>
@@ -36,14 +37,7 @@ import Projects from "../components/Projects.astro";
 
     <h1>Teams I've worked with</h1>
     <div class="main-teams-content">
-      <a target="_blank" rel="noreferrer noopener" href="https://github.com/NebulaServices" class="team neb">
-          <div class="team-title">Nebula Services</div>
-          <div class="team-description">A team of developers that work on various projects, including Nebula Web, Sylo, and Dynamic!</div>
-      </a>
-      <a href="https://github.com/consumet" target="_blank" rel="noopener noreferrer" class="team cm">
-        <div class="team-title">Consumet</div>
-        <div class="team-description">A high level API for discovering Movies, TV, Anime, and Books.</div>
-      </a>
+        <Teams></Teams>
     </div>
   </main>
 </body>
