@@ -1,0 +1,56 @@
+{
+    "alu-ub": {
+        "name": "Alu's Unblocker",
+        "description": "An efficient and simple frontend for Ultraviolet which contains many games to choose from.",
+        "links": [
+            {
+                "type": "GitHub",
+                "url": "https://github.com/wearrrrr/AlusUnblocker",
+                "icon": "fa-brands fa-github"
+            }
+        ]
+    },
+    "9launcher": {
+        "name": "9Launcher",
+        "description": "9Launcher is an actively maintained and cross platform remake of Touhou Relauncher!",
+        "links": [
+            {
+                "type": "GitHub",
+                "url": "https://github.com/wearrrrr/9Launcher",
+                "icon": "fa-brands fa-github"
+            },
+            {
+                "type": "Download",
+                "url": "https://github.com/wearrrrr/9Launcher/releases",
+                "icon": "fa-solid fa-download"
+            }
+        ]
+    },
+    "hk": {
+        "name": "Haikei",
+        "description": "A simple frontend for Ultraviolet which contains many games to choose from.",
+        "links": [
+            {
+                "type": "GitHub",
+                "url": "https://github.com/wearrrrr/Haikei",
+                "icon": "fa-brands fa-github"
+            }
+        ]
+    },
+    "m300": {
+        "name": "Midi M300",
+        "description": "A simple website to convert Midi files to M300 3d Printer Commands!",
+        "links": [
+            {
+                "type": "GitHub",
+                "url": "https://github.com/wearrrrr/Midi-M300",
+                "icon": "fa-brands fa-github"
+            },
+            {
+                "type": "Website",
+                "url": "https://wearrrrr.github.io/Midi-M300/",
+                "icon": "fa-duotone fa-globe-pointer"
+            }
+        ]
+    }
+}

@@ -1,0 +1,32 @@
+---
+type Project = {
+    name: string;
+    description: string;
+    links: {
+        github?: string;
+        website?: string;
+    }
+}
+
+const { project } = Astro.props;
+import projs from "../projects.json"
+
+---
+
+{Object.keys(projs).map((key) => {
+    const project = projs[key];
+    if (project == "links") return;
+    return (
+      <div class={"project " + key}>
+        <div class="project-title">{project.name}</div>
+        <div class="project-description">{project.description}</div>
+        <div class="project-links">
+          {project.links.map((link) => (
+            <a target="_blank" rel="noreferrer noopener" href={link.url} class="project-link">
+              <i class={link.icon}></i>
+            </a>
+          ))}
+        </div>
+      </div>
+    );
+  })}

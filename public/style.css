@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500;600;700;900&display=swap');
+:root {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #121212;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 75px;
+}
+
+.navbar {
+  background-color: #272626;
+  color: rgba(255, 255, 255, 0.87);
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+}
+.navbar > .left {
+  margin-left: 20px;
+}
+.navbar > .right {
+  margin-right: 20px;
+}
+
+.left, .right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  transition: 250ms ease-in-out;
+}
+@media (max-width: 800px) {
+  .left, .right {
+    gap: 1.5rem;
+  }
+}
+@media (max-width: 690px) {
+  .left, .right {
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .files, .about {
+    display: none;
+  }
+  .left, .right {
+    gap: 0.25rem;
+  }
+}
+@media (max-width: 430px) {
+  .left, .right {
+    gap: 0.15rem;
+  }
+  .left {
+    margin-left: 0px !important;
+  }
+  .right {
+    margin-right: 0px !important;
+  }
+}
+@media (max-width: 400px) {
+  .left > * > a, .right > * > a {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 380px) {
+  .navbar {
+    font-size: 15px;
+  }
+}
+@media (max-width: 360px) {
+  .navbar {
+    font-size: 13px;
+  }
+}
+@media (max-width: 340px) {
+  .navbar {
+    font-size: 11px;
+  }
+}
+@media (max-width: 300px) {
+  .navbar {
+    font-size: 10px;
+  }
+}
+
+.left > * > a, .right > * > a {
+  text-decoration: none;
+  color: white;
+  transition: 250ms ease-in-out;
+  padding: 15px;
+  
+}
+
+.left > *, .right > * {
+  transition: 250ms ease-in-out;
+}
+
+.left *:hover, .right > *:hover {
+  color: #aaaaaa;
+}
+
+.main-header-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.main-header-content > h1 {
+  font-size: 36px;
+  color: rgb(254, 112, 112);
+  letter-spacing: -0.5px; /* this probably destroys monospace but it looks cool */
+  margin: 0;
+}
+.main-header-content > h2 {
+  font-size: 24px;
+  color: #ededed;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+
+.main-about-me {
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+.main-about-me-paragraph {
+  font-size: 18px;
+  color: #ededed;
+  letter-spacing: -0.5px;
+  margin-top: 20px;
+}
+
+.main-about-me-language-list {
+  list-style-type: "👉 ";
+}
+
+.hire-me-skills {
+  list-style-type: "👉 ";
+}
+
+.hire-me-prices {
+  list-style-type: "👉 ";
+}
+
+.main-projects-content {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.project {
+  background-color: #272626;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+  padding-bottom: 5px;
+  text-decoration: none;
+  transition: 350ms ease-in-out;
+  min-height: 125px;
+}
+.project-title {
+  font-size: 24px;
+  color: rgb(254, 112, 112);
+  letter-spacing: -0.5px;
+}
+.project-description {
+  color: white;
+}
+.project-link {
+  color: #ededed;
+  text-decoration: none;
+  transition: 250ms ease-in-out;
+  font-size: 24px;
+}
+.project:hover {
+  cursor: pointer;
+  background-color: #3a3939;
+}
+.main-teams-content {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.team {
+  background-color: #272626;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+  text-decoration: none;
+  transition: 350ms ease-in-out;
+}
+.team-title {
+  font-size: 24px;
+  color: rgb(254, 112, 112);
+  letter-spacing: -0.5px;
+}
+.team-description {
+  color: white;
+}
+.contact-msg {
+  margin-bottom: 15px;
+}
+.main-contact-content {
+  font-size: 18px;
+  padding: 10px;
+}
+.identifier {
+  position: relative;
+  left: 114px;
+}
+.main-contact-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 65%;
+}
+
+th {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+td {
+  text-align: left;
+  padding: 8px;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
