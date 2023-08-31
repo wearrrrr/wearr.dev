@@ -15,118 +15,12 @@
 body {
   margin: 0;
   padding: 0;
-  animation: fadeIn 400ms forwards;
 }
 
 main {
   width: 80%;
   margin: 0 auto;
   margin-bottom: 25px;
-}
-
-.navbar {
-  background-color: #1a1919;
-  color: rgba(255, 255, 255, 0.87);
-  width: 100%;
-  height: 70px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-}
-.navbar > .left {
-  margin-left: 20px;
-}
-.navbar > .right {
-  margin-right: 20px;
-}
-
-.left, .right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2.5rem;
-  flex-shrink: 1;
-  transition: 250ms ease-in-out;
-}
-
-@media (max-width: 880px) {
-  .center {
-    display: none;
-  }
-}
-
-
-@media (max-width: 800px) {
-  .left, .right {
-    gap: 1.5rem;
-  }
-}
-@media (max-width: 690px) {
-  .left, .right {
-    gap: 0.5rem;
-  }
-}
-@media (max-width: 618px) {
-  .files, .about {
-    display: none;
-  }
-  .left, .right {
-    gap: 0.25rem;
-  }
-}
-@media (max-width: 430px) {
-  .left, .right {
-    gap: 0.15rem;
-  }
-  .left {
-    margin-left: 0px !important;
-  }
-  .right {
-    margin-right: 0px !important;
-  }
-}
-@media (max-width: 400px) {
-  .left > * > a, .right > * > a {
-    padding: 5px;
-  }
-}
-
-@media (max-width: 380px) {
-  .navbar {
-    font-size: 15px;
-  }
-}
-@media (max-width: 360px) {
-  .navbar {
-    font-size: 13px;
-  }
-}
-@media (max-width: 340px) {
-  .navbar {
-    font-size: 11px;
-  }
-}
-@media (max-width: 300px) {
-  .navbar {
-    font-size: 10px;
-  }
-}
-
-.left > * > a, .right > * > a {
-  text-decoration: none;
-  color: white;
-  transition: 250ms ease-in-out;
-  padding: 15px;
-  
-}
-
-.left > *, .right > * {
-  transition: 250ms ease-in-out;
-}
-
-.left *:hover, .right > *:hover {
-  color: #aaaaaa;
 }
 
 .main-header-content {
@@ -215,6 +109,7 @@ main {
   text-decoration: none;
   transition: 350ms ease-in-out;
   min-height: 125px;
+  animation: fadeIn 600ms forwards;
 }
 .project-title {
   font-size: 24px;
@@ -248,18 +143,6 @@ main {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-.team {
-  background-color: #272626;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  text-align: center;
-  border-radius: 20px;
-  padding: 10px;
-  text-decoration: none;
-  transition: 350ms ease-in-out;
 }
 .team-title {
   font-size: 24px;
@@ -331,23 +214,4 @@ td {
 
 .main-header-content > h1 > .ml9 {
   font-weight: 800;
-}
-
-.footer-full-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-}
-
-.footer-small-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
 }

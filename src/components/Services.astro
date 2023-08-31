@@ -1,0 +1,19 @@
+---
+    import ServiceCard from "./ServiceCard.astro";
+---
+
+<div class="services-container">
+    <ServiceCard></ServiceCard>
+    <ServiceCard></ServiceCard>
+    <ServiceCard></ServiceCard>
+    <ServiceCard></ServiceCard>
+</div>
+
+<style>
+    .services-container {
+        animation: fadeIn 1000ms forwards;
+        display: flex;
+        gap: 10px;
+        flex-direction: row;
+    }
+</style>
