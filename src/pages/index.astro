@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
 import ProjectList from "../components/Projects.astro";
 import Teams from "../components/Teams.astro";
+import Footer from "../components/FooterIndex.astro";
 ---
 
 <Layout title="Welcome to wearr.dev!">
@@ -43,20 +44,9 @@ import Teams from "../components/Teams.astro";
         <Teams></Teams>
     </div>
   </main>
+  <Footer/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script>
-  const textWrapper = document.querySelector('.ml9 .letters');
-  textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-  anime.timeline({loop: false})
-    .add({
-      targets: '.letter',
-      scale: [0, 1],
-      easing: 'spring(1, 90, 10, 0)',
-      duration: 2500,
-      delay: (el, i) => 45 * (i+1)
-    })
-  </script>
+  <script src="/main.js" is:inline></script>
 </body>
 </html>
 </Layout>

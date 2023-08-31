@@ -21,7 +21,7 @@ body {
 main {
   width: 80%;
   margin: 0 auto;
-  margin-bottom: 75px;
+  margin-bottom: 25px;
 }
 
 .navbar {
@@ -331,4 +331,23 @@ td {
 
 .main-header-content > h1 > .ml9 {
   font-weight: 800;
+}
+
+.footer-full-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.footer-small-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
