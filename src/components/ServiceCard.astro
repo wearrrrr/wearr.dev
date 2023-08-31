@@ -1,10 +1,13 @@
 ---
 
+const { title, description, button } = Astro.props
+
 ---
+
 <div class="service-card">
-    <div class="service-title"></div>
-    <div class="service-description"></div>
-    <div class="service-button"></div>
+    <h2 class="service-title">{title}</h2>
+    <div class="service-description">{description}</div>
+    <a class="service-button" href={button}>Get Started</a>
 </div>
 
 <style>
@@ -13,6 +16,31 @@
         width: 25%;
         display: flex;
         flex-direction: column;
-        border: 1px solid white;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid rgb(204, 204, 204);
+        border-radius: 10px;
+    }
+    .service-title {
+        text-align: center;
+    }
+    .service-description {
+        text-align: center;
+        margin: 0 auto;
+        max-width: 90%;
+        max-height: 150px;
+    }
+    .service-button {
+        padding: 10px;
+        background-color: rgb(239, 124, 124);
+        color: #fff;
+        border-radius: 15px;
+        text-decoration: none;
+        transition: 250ms ease-in-out;
+        position: relative;
+        bottom: 10px;
+    }
+    .service-button:hover {
+        background-color: rgb(254, 112, 112);
     }
 </style>
