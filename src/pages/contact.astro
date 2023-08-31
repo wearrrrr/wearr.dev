@@ -1,0 +1,35 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Contact">
+<body>
+  <Navbar />
+      <main>
+        <h1>Contact Me! </h1>
+        <div class="main-contact-content">
+            <table>
+                <tr>
+                  <th>Contact Method</th>
+                  <th>Identifier</th>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td><a href="mailto:contact@wearr.dev">contact@wearr.dev</a></td>
+                </tr>
+                <tr>
+                  <td>Discord</td>
+                  <td>wearr.</td>
+                </tr>
+                <tr>
+                  <td>SMS</td>
+                  <td><a href="tel:+19185006516">918-500-6516</a></td>
+                </tr>
+              </table>
+        </div>
+        <h3 class="warning-text"><b>If you send spam emails or messages, you will be blocked immediately.</b></h3>
+      </main>
+</body>
+</html>
+</Layout>

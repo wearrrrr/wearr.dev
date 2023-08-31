@@ -1,23 +1,26 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
-import Projects from "../components/Projects.astro";
+import ProjectList from "../components/Projects.astro";
 import Teams from "../components/Teams.astro";
 ---
 
-<Layout title="wearr.dev">
+<Layout title="Welcome to wearr.dev!">
 <body>
-  <Navbar></Navbar>
+  <Navbar />
   <main>
     <div class="main-header-content">
-      <div class="blur"></div>
-      <h1 class="first-title" id="first-title">Hi. My name is <span>wearr</span>, and I'm a Web Developer.</h1>
+      <div class="blur blur-left"></div>
+      <h1 class="first-title" id="first-title">Hi. My name is <span class="name-text">wearr</span>, and I'm a <span class="ml9"><span class="text-wrapper"><span class="letters">Web Developer</span></span></span></h1>
     </div>
-  
+    <div class="blur blur-right"></div>
     <div class="main-about-me">
       About Me:
       <div class="main-about-me-paragraph">
-          My real name is Rowan, but I commonly go by wearr in non-professional environments. I currently work with <a class="link" target="_blank" rel="noreferrer noopener" href="https://github.com/NebulaServices">Nebula Services</a>. I am a student and an aspiring web developer, and so far I have experience in
+          <p>My real name is Rowan, but I commonly go by wearr in online environments. I currently work with <a class="link" target="_blank" rel="noreferrer noopener" href="https://github.com/NebulaServices">Nebula Services</a>. I am a student and an aspiring web developer.</p>
+          
+          <p>I am currently learning:</p>
+          
           <ol class="main-about-me-language-list">
             <li>HTML</li>
             <li>CSS</li>
@@ -32,7 +35,7 @@ import Teams from "../components/Teams.astro";
 
     <h1>Projects: </h1>
     <div class="main-projects-content">
-      <Projects></Projects>
+      <ProjectList />
     </div>
 
     <h1>Teams I've worked with</h1>
@@ -40,6 +43,20 @@ import Teams from "../components/Teams.astro";
         <Teams></Teams>
     </div>
   </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+  const textWrapper = document.querySelector('.ml9 .letters');
+  textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+  anime.timeline({loop: false})
+    .add({
+      targets: '.letter',
+      scale: [0, 1],
+      easing: 'spring(1, 90, 10, 0)',
+      duration: 2500,
+      delay: (el, i) => 45 * (i+1)
+    })
+  </script>
 </body>
 </html>
 </Layout>

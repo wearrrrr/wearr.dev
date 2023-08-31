@@ -7,14 +7,16 @@ import teams from "../teams.json"
 {Object.keys(teams).map((key) => {
     const team = teams[key];
     return(
-        <div class={"team" + key}>
+        <div class={"team " + key}>
             <div class="team-title">{team.name}</div>
             <div class="team-description">{team.description}</div>
+            <div class="team-links">
             {team.links.map((link) => (
-                <a target="_blank" rel="noreferrer noopener" href={link.url} class="project-link">
+                <a target="_blank" rel="noreferrer noopener" href={link.url} class="team-link">
                     <i class={link.icon}></i>
                 </a>
             ))}   
+            </div>
         </div>
     )
 })}

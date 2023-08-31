@@ -6,7 +6,7 @@
             {
                 "type": "github",
                 "url": "https://github.com/consumet",
-                "link": "fa-solid fa-link"
+                "icon": "fa-brands fa-github"
             }
         ]
     },
@@ -17,7 +17,7 @@
             {
                 "type": "github",
                 "url": "https://github.com/NebulaServices",
-                "link": "fa-solid fa-link"
+                "icon": "fa-brands fa-github"
             }
         ]
     }
