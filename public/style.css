@@ -199,7 +199,8 @@ td {
 
 .ml9 {
   position: relative;
-  font-weight: 800 !important;
+  font-weight: 700 !important;
+  display: none;
 }
 
 .letters {

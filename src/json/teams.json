@@ -1,4 +1,20 @@
 {
+    "mercury-workshop": {
+        "name": "Mercury Workshop",
+        "description": "A small team of active developers typically focused around finding flaws in methods of ChromeOS user restriction.",
+        "links": [
+            {
+                "type": "github",
+                "url": "https://github.com/MercuryWorkshop",
+                "icon": "fa-brands fa-github"
+            },
+            {
+                "type": "Website",
+                "url": "https://mercurywork.shop",
+                "icon": "fa-duotone fa-globe-pointer"
+            }
+        ]
+    },
     "nebula": {
         "name": "Nebula Services",
         "description": "A team of developers that work on various projects, including Nebula Web, Sylo, and Dynamic!",
@@ -12,7 +28,7 @@
     },
     "consumet": {
         "name": "Consumet",
-        "description": "A high level API for discovering Movies, TV, Anime, and Books.",
+        "description": "A high level Typescript API for retrieving information for Anime, Movies, TV, and Books.",
         "links": [
             {
                 "type": "github",

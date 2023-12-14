@@ -10,6 +10,22 @@
             }
         ]
     },
+    "eosdecomp": {
+        "name": "EoSDecomp",
+        "description": "An Attempt at a byte accurate decompilation of Touhou 6 ~ Embodiment of Scarlet Devil.",
+        "links": [
+            {
+                "type": "GitHub",
+                "url": "https://github.com/wearrrrr/EoSDecomp",
+                "icon": "fa-brands fa-github"
+            },
+            {
+                "type": "Website",
+                "url": "https://ghidra.wearr.dev/",
+                "icon": "fa-duotone fa-globe-pointer"
+            }
+        ]
+    },
     "9launcher": {
         "name": "9Launcher",
         "description": "9Launcher is an actively maintained and cross platform remake of Touhou Relauncher!",
@@ -26,9 +42,20 @@
             }
         ]
     },
+    "iptauriv": {
+        "name": "IPTauriV",
+        "description": "A simple and efficient IPTV Player written in Rust and Typescript.",
+        "links": [
+            {
+                "type": "GitHub",
+                "url": "https://github.com/wearrrrr/IPTauriV",
+                "icon": "fa-brands fa-github"
+            }
+        ]
+    },
     "hk": {
         "name": "Haikei",
-        "description": "A simple frontend for Ultraviolet which contains many games to choose from.",
+        "description": "An ad-free anime streaming website, with a simple and elegant UI.",
         "links": [
             {
                 "type": "GitHub",
@@ -37,9 +64,9 @@
             }
         ]
     },
-    "m300": {
-        "name": "Midi M300",
-        "description": "A simple website to convert Midi files to M300 3d Printer Commands!",
+    "midi-m300": {
+        "name": "MIDI-M300",
+        "description": "A simple website to convert MIDI files to M300 3D Printer Commands.",
         "links": [
             {
                 "type": "GitHub",
