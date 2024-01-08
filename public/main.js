@@ -16,4 +16,14 @@ function timelineText() {
   })
 }
 
-document.addEventListener('DOMContentLoaded', timelineText, false);
+document.addEventListener('astro:page-load', () => {
+  let reducedMotion = window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true
+  if (window.location.pathname == "/") {
+    if (!reducedMotion) {
+      timelineText();
+    } else {
+      let ml9 = document.querySelector('.ml9');
+      ml9.style.display = "inline-block"
+    }
+  }
+}, { once: true });

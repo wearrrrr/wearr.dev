@@ -41,7 +41,6 @@ main {
 .main-header-content > h1 > .name-text {
   color: rgb(254, 112, 112);
   text-decoration: underline;
-  /* Temporary, eventually I want this to be an animation with psuedo elements. */
 }
 
 .main-about-me {
@@ -55,15 +54,7 @@ main {
   letter-spacing: -0.5px;
 }
 
-.main-about-me-language-list {
-  list-style-type: "👉 ";
-}
-
-.hire-me-skills {
-  list-style-type: "👉 ";
-}
-
-.hire-me-prices {
+.list-item {
   list-style-type: "👉 ";
 }
 
@@ -96,6 +87,19 @@ main {
   filter: blur(62px);
   opacity: 0.7;
 }
+
+@media (max-width: 500px) {
+  .blur-right {
+    left: 50%;
+  }
+}
+
+@media (max-width: 345px) {
+  .blur-right {
+    left: 40%;
+  }
+}
+
 .project {
   background-color: #272626;
   display: flex;
