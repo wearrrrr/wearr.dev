@@ -12,7 +12,7 @@ const { title, description, button } = Astro.props
 
 <style>
     .service-card {
-        width: 25%;
+        width: 225px;
         overflow: hidden;
         display: flex;
         flex-direction: column;
@@ -26,16 +26,6 @@ const { title, description, button } = Astro.props
         text-align: center;
         font-size: 24px;
         height: 80px;
-    }
-    @media (max-width: 950px) {
-        .service-title {
-            font-size: 90%;
-            overflow-wrap: anywhere;
-        }
-        .service-description {
-            font-size: 12px;
-            overflow-wrap: anywhere;
-        }
     }
     .service-description {
         text-align: center;

@@ -9,7 +9,7 @@
                 "icon": "fa-brands fa-github"
             },
             {
-                "type": "Website",
+                "type": "website",
                 "url": "https://mercurywork.shop",
                 "icon": "fa-duotone fa-globe-pointer"
             }

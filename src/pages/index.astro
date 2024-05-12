@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
 import ProjectList from "../components/Projects.astro";
 import Teams from "../components/Teams.astro";
-import Footer from "../components/FooterIndex.astro";
+import Footer from "../components/Footer.astro";
 import Services from "../components/Services.astro";
 ---
 
@@ -56,15 +56,14 @@ import Services from "../components/Services.astro";
     <Services />
   </main>
   <Footer/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>
 </Layout>
-<script is:inline>
-
+<script>
+import anime from 'animejs/lib/anime.es.js';
 
 function timelineText() {
-  let ml9 = document.querySelector('.ml9');
+  let ml9 = document.querySelector('.ml9') as HTMLSpanElement;
   ml9.style.display = "inline-block"
   let textWrapper = document.querySelector('.ml9 .letters');
   textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -73,26 +72,24 @@ function timelineText() {
   .add({
     targets: '.letter',
     scale: [0, 1],
-    easing: 'spring(1, 90, 10, 0)',
+    easing: 'spring(1, 180, 10, 0)',
     duration: 2500,
     delay: (el, i) => 45 * (i+1)
   })
 }
 
 function playAnimation() {
-  let reducedMotion = window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true
-  if (window.location.pathname == "/") {
-    if (!reducedMotion) {
-      timelineText();
-    } else {
-      let ml9 = document.querySelector('.ml9');
-      ml9.style.display = "inline-block"
-    }
+  if (window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === false) {
+    timelineText();
+  } else {
+    (document.querySelector('.ml9') as HTMLSpanElement).style.display = "inline-block"
   }
 }
 
-document.addEventListener('astro:after-swap', () => {
-  playAnimation();
-}, { once: true });
 playAnimation();
+
+document.addEventListener("astro:after-swap", () => {
+  playAnimation();
+})
+
 </script>
