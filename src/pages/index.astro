@@ -11,6 +11,7 @@ import Services from "../components/Services.astro";
 <body>
   <Navbar />
   <main>
+    <img src="/crt_red_mask.png" class="crt-mask">
     <div class="main-header-content">
       <div class="blur blur-left"></div>
       <h1 class="first-title" id="first-title">Hi. My name is <span class="name-text">wearr</span>, and I'm a <span class="ml9"><span class="text-wrapper"><span class="letters">Web Developer</span></span></span></h1>
@@ -63,6 +64,7 @@ import Services from "../components/Services.astro";
 import anime from 'animejs/lib/anime.es.js';
 
 function timelineText() {
+  if (!document.querySelector('.ml9')) return;
   let ml9 = document.querySelector('.ml9') as HTMLSpanElement;
   ml9.style.display = "inline-block"
   let textWrapper = document.querySelector('.ml9 .letters');
@@ -79,9 +81,10 @@ function timelineText() {
 }
 
 function playAnimation() {
-  if (window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === false) {
+  if (window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === false && localStorage.getItem("retro") == "false") {
     timelineText();
   } else {
+    if (!document.querySelector('.ml9')) return;
     (document.querySelector('.ml9') as HTMLSpanElement).style.display = "inline-block"
   }
 }
@@ -90,6 +93,39 @@ playAnimation();
 
 document.addEventListener("astro:after-swap", () => {
   playAnimation();
+})
+
+
+
+const pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let current = 0;
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === pattern[current]) {
+    current++;
+    if (current === pattern.length) {
+      // Activate retro mode
+      if (localStorage.getItem("retro") == "true") {
+        localStorage.setItem("retro", "false");
+        document.body.classList.add("transitioning");
+        setTimeout(() => {
+          document.body.classList.toggle('retro');
+          document.body.classList.remove("transitioning");
+        }, 250);
+        return;
+      }
+      localStorage.setItem("retro", "true");
+      document.body.classList.add("transitioning");
+      setTimeout(() => {
+        document.body.classList.toggle('retro');
+        document.body.classList.remove("transitioning");
+      }, 250);
+
+      current = 0;
+    }
+  } else {
+    current = 0;
+  }
 })
 
 </script>

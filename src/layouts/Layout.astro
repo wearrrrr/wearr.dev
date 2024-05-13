@@ -14,13 +14,23 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
     <meta charset="UTF-8" />
     <meta name="description" content="Welcome to wearr.dev!" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <link rel="style" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"/>
     <ViewTransitions />
     <title>{title}</title>
   </head>
   <body>
     <slot />
+    <script>
+      if (localStorage.getItem("retro") === "true") {
+        document.body.classList.add("retro");
+      }
+      document.addEventListener('astro:after-swap', () => {
+        if (localStorage.getItem("retro") === "true") {
+          document.body.classList.add("retro");
+        }
+      })
+    </script>
   </body>
 </html>
 <style is:global>
@@ -28,9 +38,33 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
     :root {
       font-family: "Poppins", sans-serif;
       font-weight: 400;
-      color-scheme: light dark;
-      color: rgba(255, 255, 255, 0.87);
+      color-scheme: dark;
       background-color: #121212;
+      --color: #fff;
+      --text-color: rgb(254, 112, 112);
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    body, body.transitioning {
+      opacity: 0;
+      animation: fadeIn 0.5s forwards;
+    }
+
+    body.retro {
+      opacity: 1;
+    }
+
+    body.retro {
+      --color: #eee;
+      --text-color: #dedede;
     }
 
     *,*::before,*::after {
@@ -61,13 +95,12 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
 
     .main-header-content > h1 {
       font-size: 36px;
-      color: rgb(254, 112, 112);
-      letter-spacing: -0.5px;
+      color: var(--text-color);
       margin: 0;
       font-weight: 500;
     }
     .main-header-content > h1 > .name-text {
-      color: rgb(254, 112, 112);
+      color: var(--text-color);
       text-decoration: underline;
     }
 
@@ -78,8 +111,7 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
 
     .main-about-me-paragraph {
       font-size: 18px;
-      color: #ededed;
-      letter-spacing: -0.5px;
+      color: var(--color);
     }
 
     .list-item {
@@ -92,7 +124,7 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
     .link {
-      color: rgb(254, 112, 112);
+      color: var(--text-color);
     }
     .blur {
       position: absolute;
@@ -145,8 +177,7 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
     }
     .project-title {
       font-size: 24px;
-      color: rgb(254, 112, 112);
-      letter-spacing: -0.5px;
+      color: var(--text-color);
     }
     .project-description {
       color: white;
@@ -179,8 +210,7 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
     }
     .team-title {
       font-size: 24px;
-      color: rgb(254, 112, 112);
-      letter-spacing: -0.5px;
+      color: var(--text-color);
     }
     .team-description {
       color: white;
@@ -249,4 +279,155 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
     .main-header-content > h1 > .ml9 {
       font-weight: 800;
     }
+
+    @font-face {
+      font-family: "VHS";
+      src: url("/STV5730A.woff2");
+    }
+
+    @keyframes transitionToRetro {
+      0% {
+        filter: blur(0);
+      }
+      25% {
+        filter: blur(0.5px);
+      }
+      50% {
+        filter: blur(1px);
+      }
+      75% {
+        filter: blur(1.5px);
+      }
+      100% {
+        filter: blur(2px);
+      }
+    }
+
+    body.transitioning {
+      animation: transitionToRetro 0.25s forwards;
+    }
+
+    .retro {
+      background: #111;
+      color: #eee !important;
+      font-family: "VHS", sans-serif;
+      line-height: 1.25;
+      letter-spacing: 0.2em !important;
+      animation-duration: 0.01s;
+      animation-name: textflicker;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+    @keyframes textflicker {
+      from {
+        text-shadow: 1px 0 0 #ea36af, -2px 0 0 #75fa69;
+      }
+      to {
+        text-shadow: 2px 0.5px 2px #ea36af, -1px -0.5px 2px #75fa69;
+      }
+    }
+    .retro::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgb
+a(0, 0, 255, 0.06));
+        z-index: 2;
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+}
+
+/*This adds a "flickering screen" effect*/
+  .retro::after {
+          content: " ";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          background: rgba(18, 16, 16, 0.1);
+          opacity: 0;
+          z-index: 2;
+          pointer-events: none;
+          animation: flicker 0.15s infinite;
+  }
+
+  @keyframes flicker {
+          0% {opacity: 0.27861;}
+          5% {opacity: 0.34769;}
+          10% {opacity: 0.23604;}
+          15% {opacity: 0.90626;}
+          20% {opacity: 0.18128;}
+          25% {opacity: 0.83891;}
+          30% {opacity: 0.65583;}
+          35% {opacity: 0.67807;}
+          40% {opacity: 0.26559;}
+          45% {opacity: 0.84693;}
+          50% {opacity: 0.96019;}
+          55% {opacity: 0.08594;}
+          60% {opacity: 0.20313;}
+          65% {opacity: 0.71988;}
+          70% {opacity: 0.53455;}
+          75% {opacity: 0.37288;}
+          80% {opacity: 0.71428;}
+          85% {opacity: 0.70419;}
+          90% {opacity: 0.7003;}
+          95% {opacity: 0.36108;}
+          100% {opacity: 0.24387;}
+  }
+
+  /*Adds a "color separation flicker" effect to all text*/
+  .crt-colorsep {
+          animation: textShadow 1.6s infinite;
+  }
+
+  body:not(.retro) .crt-mask {
+    opacity: 0;
+  }
+
+  .retro .navbar {
+    margin-top: 25px;
+  }
+
+  @keyframes textShadow {
+          0% {text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          5% {text-shadow: 2.7928974010788217px 0 1px rgba(0,30,255,0.5), -2.7928974010788217px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          10% {text-shadow: 0.02956275843481219px 0 1px rgba(0,30,255,0.5), -0.02956275843481219px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          15% {text-shadow: 0.40218538552878136px 0 1px rgba(0,30,255,0.5), -0.40218538552878136px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          20% {text-shadow: 3.4794037899852017px 0 1px rgba(0,30,255,0.5), -3.4794037899852017px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          25% {text-shadow: 1.6125630401149584px 0 1px rgba(0,30,255,0.5), -1.6125630401149584px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          30% {text-shadow: 0.7015590085143956px 0 1px rgba(0,30,255,0.5), -0.7015590085143956px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          35% {text-shadow: 3.896914047650351px 0 1px rgba(0,30,255,0.5), -3.896914047650351px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          40% {text-shadow: 3.870905614848819px 0 1px rgba(0,30,255,0.5), -3.870905614848819px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          45% {text-shadow: 2.231056963361899px 0 1px rgba(0,30,255,0.5), -2.231056963361899px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          50% {text-shadow: 0.08084290417898504px 0 1px rgba(0,30,255,0.5), -0.08084290417898504px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          55% {text-shadow: 2.3758461067427543px 0 1px rgba(0,30,255,0.5), -2.3758461067427543px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          60% {text-shadow: 2.202193051050636px 0 1px rgba(0,30,255,0.5), -2.202193051050636px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          65% {text-shadow: 2.8638780614874975px 0 1px rgba(0,30,255,0.5), -2.8638780614874975px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          70% {text-shadow: 0.48874025155497314px 0 1px rgba(0,30,255,0.5), -0.48874025155497314px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          75% {text-shadow: 1.8948491305757957px 0 1px rgba(0,30,255,0.5), -1.8948491305757957px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          80% {text-shadow: 0.0833037308038857px 0 1px rgba(0,30,255,0.5), -0.0833037308038857px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          85% {text-shadow: 0.09769827255241735px 0 1px rgba(0,30,255,0.5), -0.09769827255241735px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          90% {text-shadow: 3.443339761481782px 0 1px rgba(0,30,255,0.5), -3.443339761481782px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          95% {text-shadow: 2.1841838852799786px 0 1px rgba(0,30,255,0.5), -2.1841838852799786px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+          100% {text-shadow: 2.6208764473832513px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(255,0,80,0.3), 0 0 3px;}
+  }
+
+  .crt-mask {
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
   </style>
