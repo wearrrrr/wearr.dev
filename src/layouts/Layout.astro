@@ -40,6 +40,7 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
       font-weight: 400;
       color-scheme: dark;
       background-color: #121212;
+      letter-spacing: 0.1em;
       --color: #fff;
       --text-color: rgb(254, 112, 112);
     }
@@ -196,12 +197,16 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
       font-size: 1.5rem;
       height: 32px;
     }
+
+    body:has(.retro) .project-link .team-link {
+      transition: none;
+    }
+
     .team-link {
       font-size: 2rem;
     }
     .project:hover {
       cursor: pointer;
-      background-color: #3a3939;
     }
     .main-teams-content {
       display: grid;
@@ -312,12 +317,12 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
       color: #eee !important;
       font-family: "VHS", sans-serif;
       line-height: 1.25;
-      letter-spacing: 0.2em !important;
       animation-duration: 0.01s;
       animation-name: textflicker;
       animation-iteration-count: infinite;
       animation-direction: alternate;
     }
+
     @keyframes textflicker {
       from {
         text-shadow: 1px 0 0 #ea36af, -2px 0 0 #75fa69;
