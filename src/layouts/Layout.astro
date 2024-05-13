@@ -44,10 +44,6 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
       --text-color: rgb(254, 112, 112);
     }
 
-    body {
-      letter-spacing: 0.1em;
-    }
-
     @keyframes fadeIn {
       0% {
         opacity: 0;
@@ -82,6 +78,7 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
       flex-direction: column;
       justify-content: space-between;
       height: 100vh;
+      letter-spacing: 0.1rem !important;
     }
 
     main {
@@ -196,13 +193,8 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
     .project-link, .team-link {
       color: #ededed;
       text-decoration: none;
-      transition: 250ms ease-in-out;
       font-size: 1.5rem;
       height: 32px;
-    }
-
-    body:has(.retro) .project-link .team-link {
-      transition: none;
     }
 
     .team-link {
