@@ -10,6 +10,16 @@
             }
         ]
     },
+    "ddlc-wasm": {
+        "name": "DDLC.wasm",
+        "description": "A basic port of Doki Doki Literature Club to WebAssembly.",
+        "links": [
+            {
+                "type": "website",
+                "url": "https://ddlc.wearr.dev"
+            }
+        ]
+    },
     "eosdecomp": {
         "name": "EoSDecomp",
         "description": "An Attempt at a byte accurate decompilation of Touhou 6 ~ Embodiment of Scarlet Devil.",
