@@ -1,7 +1,7 @@
 {
     "alu-ub": {
         "name": "Alu",
-        "description": "Alu is a simple and efficient Wisp protocol implementation, with a focus on performance and simplicity.",
+        "description": "Alu is a simple and efficient proxy frontend using the Wisp protocol.",
         "links": [
             {
                 "type": "github",
