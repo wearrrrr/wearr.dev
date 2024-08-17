@@ -1,5 +1,5 @@
 {
-    "alu-ub": {
+    "alu": {
         "name": "Alu",
         "description": "Alu is a simple and efficient proxy frontend using the Wisp protocol.",
         "links": [
@@ -10,9 +10,23 @@
             }
         ]
     },
+    "anura": {
+        "name": "AnuraOS",
+        "description": "A web OS and development environment with v86 linux emulation",
+        "links": [
+            {
+                "type": "github",
+                "url": "https://github.com/MercuryWorkshop/AnuraOS"
+            },
+            {
+                "type": "website",
+                "url": "https://anura.pro/"
+            }
+        ]
+    },
     "ddlc-wasm": {
         "name": "DDLC.wasm",
-        "description": "A basic port of Doki Doki Literature Club to WebAssembly.",
+        "description": "A basic port of Doki Doki Literature Club to WebAssembly. Uses Ren'Py Web.",
         "links": [
             {
                 "type": "website",
@@ -67,7 +81,7 @@
     },
     "midi-m300": {
         "name": "MIDI-M300",
-        "description": "A simple website to convert MIDI files to M300 3D Printer Commands.",
+        "description": "A simple website to effortlessly convert MIDI files to M300 3D Printer Commands.",
         "links": [
             {
                 "type": "github",
