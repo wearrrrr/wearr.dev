@@ -35,11 +35,13 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
 </html>
 <style is:global>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
-    :root {
+
+    *,*::before,*::after {
+      box-sizing: border-box;
+    }
+    * {
       font-family: "Poppins", sans-serif;
-      font-weight: 400;
       color-scheme: dark;
-      background-color: #121212;
       --color: #fff;
       --text-color: rgb(254, 112, 112);
     }
@@ -65,10 +67,6 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
     body.retro {
       --color: #eee;
       --text-color: #dedede;
-    }
-
-    *,*::before,*::after {
-      box-sizing: border-box;
     }
 
     body {
@@ -107,7 +105,6 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
 
     .main-about-me {
       font-size: 24px;
-      margin-bottom: none;
     }
 
     .main-about-me-paragraph {
