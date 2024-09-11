@@ -14,7 +14,7 @@ import Services from "../components/Services.astro";
     <img src="/crt_red_mask.png" class="crt-mask">
     <div class="main-header-content">
       <div class="blur blur-left"></div>
-      <h1 class="first-title" id="first-title">Hi. My name is <span class="name-text">wearr</span>, and I'm a <span class="ml9"><span class="text-wrapper"><span class="letters">Web Developer</span></span></span></h1>
+      <h1 class="first-title" id="first-title">Hi. My name is <span class="name-text">wearr</span>, and I'm a <span class="fancy-wrapper"><span class="letters">Web Developer</span></span></h1>
     </div>
     <div class="blur blur-right"></div>
     <div class="main-about-me">
@@ -61,31 +61,20 @@ import Services from "../components/Services.astro";
 </html>
 </Layout>
 <script>
-import anime from 'animejs/lib/anime.es.js';
-
+  const fancyWrapper = document.querySelector('.fancy-wrapper') as HTMLSpanElement;
 function timelineText() {
-  if (!document.querySelector('.ml9')) return;
-  let ml9 = document.querySelector('.ml9') as HTMLSpanElement;
-  ml9.style.display = "inline-block"
-  let textWrapper = document.querySelector('.ml9 .letters');
-  textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-  
-  anime.timeline({loop: false})
-  .add({
-    targets: '.letter',
-    scale: [0, 1],
-    easing: 'spring(1, 180, 10, 0)',
-    duration: 2500,
-    delay: (el, i) => 45 * (i+1)
-  })
+  if (!fancyWrapper) return;
+  fancyWrapper.style.display = "inline-block"
+  let letters = document.querySelector('.fancy-wrapper .letters');
+  letters.innerHTML = letters.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 }
 
 function playAnimation() {
   if (window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === false && localStorage.getItem("retro") == "false") {
     timelineText();
   } else {
-    if (!document.querySelector('.ml9')) return;
-    (document.querySelector('.ml9') as HTMLSpanElement).style.display = "inline-block"
+    if (!fancyWrapper) return;
+    fancyWrapper.style.display = "inline-block"
   }
 }
 

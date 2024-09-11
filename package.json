@@ -1,7 +1,7 @@
 {
-  "name": "",
+  "name": "wearr.dev",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -9,11 +9,7 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "dependencies": {
-    "animejs": "^3.2.2",
-    "astro": "^3.0.2"
-  },
   "devDependencies": {
-    "@types/animejs": "^3.1.12"
+    "astro": "^3.6.5"
   }
 }
