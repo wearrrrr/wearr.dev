@@ -10,20 +10,6 @@
             }
         ]
     },
-    "anura": {
-        "name": "AnuraOS",
-        "description": "A web OS and development environment with v86 linux emulation",
-        "links": [
-            {
-                "type": "github",
-                "url": "https://github.com/MercuryWorkshop/AnuraOS"
-            },
-            {
-                "type": "website",
-                "url": "https://anura.pro/"
-            }
-        ]
-    },
     "ddlc-wasm": {
         "name": "DDLC.wasm",
         "description": "A basic port of Doki Doki Literature Club to WebAssembly. Uses Ren'Py Web.",

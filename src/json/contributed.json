@@ -1,0 +1,54 @@
+{
+  "anura": {
+      "name": "AnuraOS",
+      "description": "A web OS and development environment with v86 linux emulation, features a package manager, code editor, and more!",
+      "links": [
+          {
+              "type": "github",
+              "url": "https://github.com/MercuryWorkshop/AnuraOS"
+          },
+          {
+              "type": "website",
+              "url": "https://anura.pro/"
+          }
+      ]
+  },
+  "ultraviolet": {
+      "name": "Ultraviolet",
+      "description": "A highly sophisticated proxy used for evading internet censorship or accessing websites in a controlled sandbox using service-workers.",
+      "links": [
+          {
+              "type": "github",
+              "url": "https://github.com/titaniumnetwork-dev/Ultraviolet/"
+          }
+      ]
+  },
+  "decomp-me": {
+    "name": "Decomp.me",
+    "description": "Collaborative decompilation and reverse engineering website, supporting a wide range of platforms and devices!",
+    "links": [
+        {
+            "type": "github",
+            "url": "https://github.com/decompme/decomp.me"
+        },
+        {
+          "type": "website",
+          "url": "https://decomp.me/"
+        }
+    ]
+  },
+  "consumet": {
+    "name": "Consumet",
+    "description": "Node.js library that provides high-level APIs for obtaining information on various sources of media.",
+    "links": [
+      {
+        "type": "github",
+        "url": "https://github.com/consumet/consumet.ts"
+      },
+      {
+        "type": "website",
+        "url": "https://docs.consumet.org/"
+      }
+    ]
+  }
+}

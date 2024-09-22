@@ -2,6 +2,7 @@
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
 import ProjectList from "../components/Projects.astro";
+import Contributed from "../components/Contributed.astro";
 import Footer from "../components/Footer.astro";
 ---
 <Layout title="Projects">
@@ -13,7 +14,12 @@ import Footer from "../components/Footer.astro";
     <h3>Here is every project that I have made by myself!</h3>
     <div class="main-projects-content">
       <ProjectList />
-      </div>
+    </div>
+    <h1>Projects I've Contributed to: </h1>
+    <h3>Here is every project that I have contributed to!</h3>
+    <div class="main-contributed-content">
+      <Contributed />
+    </div>
     </main>
     <Footer/>
 </body>

@@ -1,0 +1,26 @@
+---
+import contributed from "../json/contributed.json"
+import GithubIcon from "./icons/GithubIcon.astro";
+import WebsiteIcon from "./icons/WebsiteIcon.astro";
+import DownloadIcon from "./icons/DownloadIcon.astro";
+---
+{Object.keys(contributed).map((key) => {
+  const project = contributed[key];
+  return (
+    <div class={"project " + key}>
+      <div class="project-title">{project.name}</div>
+      <div class="project-description">{project.description}</div>
+      <div class="project-links">
+        {project.links.map((link) => (
+          <a target="_blank" rel="noreferrer noopener" href={link.url} class="project-link">
+              {
+              link.type === "github" ? <GithubIcon /> :
+              link.type === "website" ? <WebsiteIcon/> :
+              link.type === "download" ? <DownloadIcon/> : null
+              }
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+})}

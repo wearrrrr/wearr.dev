@@ -5,6 +5,7 @@ import ProjectList from "../components/Projects.astro";
 import Teams from "../components/Teams.astro";
 import Footer from "../components/Footer.astro";
 import Services from "../components/Services.astro";
+import Contributed from "../components/Contributed.astro";
 ---
 
 <Layout title="Welcome to wearr.dev!">
@@ -47,6 +48,11 @@ import Services from "../components/Services.astro";
     <div class="main-projects-content">
       <ProjectList />
     </div>
+    
+    <h1>Contributed: </h1>
+    <div class="main-contributed-content">
+      <Contributed />
+    </div>
 
     <h1>Teams I've worked with</h1>
     <div class="main-teams-content">
@@ -82,39 +88,6 @@ playAnimation();
 
 document.addEventListener("astro:after-swap", () => {
   playAnimation();
-})
-
-
-
-const pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a', 'Enter'];
-let current = 0;
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === pattern[current]) {
-    current++;
-    if (current === pattern.length) {
-      // Activate retro mode
-      if (localStorage.getItem("retro") == "true") {
-        localStorage.setItem("retro", "false");
-        document.body.classList.add("transitioning");
-        setTimeout(() => {
-          document.body.classList.toggle('retro');
-          document.body.classList.remove("transitioning");
-        }, 250);
-        return;
-      }
-      localStorage.setItem("retro", "true");
-      document.body.classList.add("transitioning");
-      setTimeout(() => {
-        document.body.classList.toggle('retro');
-        document.body.classList.remove("transitioning");
-      }, 250);
-
-      current = 0;
-    }
-  } else {
-    current = 0;
-  }
-})
+});
 
 </script>
