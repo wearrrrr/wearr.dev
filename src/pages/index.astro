@@ -66,8 +66,8 @@ import Contributed from "../components/Contributed.astro";
 </body>
 </html>
 </Layout>
-<script>
-  const fancyWrapper = document.querySelector('.fancy-wrapper') as HTMLSpanElement;
+<script is:inline>
+  const fancyWrapper = document.querySelector('.fancy-wrapper');
 function timelineText() {
   if (!fancyWrapper) return;
   fancyWrapper.style.display = "inline-block"
