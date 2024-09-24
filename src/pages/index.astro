@@ -6,6 +6,7 @@ import Teams from "../components/Teams.astro";
 import Footer from "../components/Footer.astro";
 import Services from "../components/Services.astro";
 import Contributed from "../components/Contributed.astro";
+import { prefetch } from "astro:prefetch";
 ---
 
 <Layout title="Welcome to wearr.dev!">
@@ -45,17 +46,17 @@ import Contributed from "../components/Contributed.astro";
 
 
     <h1>Projects: </h1>
-    <div class="main-projects-content">
+    <div class="main-projects-content list-container">
       <ProjectList />
     </div>
     
     <h1>Contributed: </h1>
-    <div class="main-contributed-content">
+    <div class="main-contributed-content list-container">
       <Contributed />
     </div>
 
     <h1>Teams I've worked with</h1>
-    <div class="main-teams-content">
+    <div class="main-teams-content list-container">
         <Teams />
     </div>
 
@@ -67,7 +68,7 @@ import Contributed from "../components/Contributed.astro";
 </html>
 </Layout>
 <script is:inline>
-  const fancyWrapper = document.querySelector('.fancy-wrapper');
+const fancyWrapper = document.querySelector('.fancy-wrapper');
 function timelineText() {
   if (!fancyWrapper) return;
   fancyWrapper.style.display = "inline-block"
@@ -79,6 +80,28 @@ function playAnimation() {
   if (window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === false && localStorage.getItem("retro") == "false") {
     timelineText();
   } else {
+    // Check is at least firefox 16, IE 10 or Chrome 43
+    switch (browserVersion.name) {
+      case "Chrome":
+        if (browserVersion.version >= 43) {
+          timelineText();
+        }
+        break;
+      case "Firefox":
+        if (browserVersion.version >= 16) {
+          timelineText();
+        }
+        break;
+      case "IE":
+        if (browserVersion.version >= 10) {
+          timelineText();
+        }
+        break;
+      default:
+        break;
+    }
+    
+
     if (!fancyWrapper) return;
     fancyWrapper.style.display = "inline-block"
   }

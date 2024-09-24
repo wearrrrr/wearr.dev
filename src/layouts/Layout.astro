@@ -6,6 +6,7 @@ interface Props {
 const { title } = Astro.props;
 
 import ViewTransitions from "astro/components/ViewTransitions.astro";
+import Polyfill from "../components/Polyfill.astro";
 ---
 
 <!doctype html>
@@ -31,6 +32,7 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
         }
       })
     </script>
+    <Polyfill />
   </body>
 </html>
 <style is:global>
@@ -120,6 +122,18 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
       list-style-type: "👉 ";
     }
 
+    .flex-wrap-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .flex-wrap-container > * {
+      flex: 1 1 300px;
+      min-width: 300px;
+      margin: 5px;
+    }
+
     .main-projects-content {
       display: grid;
       gap: 20px;
@@ -135,7 +149,7 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
     }
     .blur {
       position: absolute;
-      background-color: rgb(186 91 91);
+      background-color: rgb(186, 91, 91);
       filter: blur(60px);
       z-index: -100;
       border-radius: 100%;
