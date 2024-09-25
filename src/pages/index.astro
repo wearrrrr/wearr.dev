@@ -71,38 +71,38 @@ import { prefetch } from "astro:prefetch";
 const fancyWrapper = document.querySelector('.fancy-wrapper');
 function timelineText() {
   if (!fancyWrapper) return;
-  fancyWrapper.style.display = "inline-block"
-  let letters = document.querySelector('.fancy-wrapper .letters');
+  fancyWrapper.style.display = "inline-block";
+  var letters = document.querySelector('.fancy-wrapper .letters');
   letters.innerHTML = letters.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 }
 
 function playAnimation() {
-  if (window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === false && localStorage.getItem("retro") == "false") {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches === false && localStorage.getItem("retro") == "false") {
     timelineText();
   } else {
     // Check is at least firefox 16, IE 10 or Chrome 43
-    switch (browserVersion.name) {
+    switch (browser.name) {
       case "Chrome":
-        if (browserVersion.version >= 43) {
+        if (browser.version >= 43) {
           timelineText();
         }
         break;
       case "Firefox":
-        if (browserVersion.version >= 16) {
+        if (browser.version >= 16) {
           timelineText();
         }
         break;
       case "IE":
-        if (browserVersion.version >= 10) {
+        if (browser.version >= 10) {
           timelineText();
         }
         break;
       default:
-        break;
+        break
     }
-    
-
-    if (!fancyWrapper) return;
+    if (!fancyWrapper) {
+      throw new Error("fancyWrapper not found!");
+    };
     fancyWrapper.style.display = "inline-block"
   }
 }

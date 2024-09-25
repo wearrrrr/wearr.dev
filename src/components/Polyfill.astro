@@ -2,11 +2,49 @@
   if (!CSS.supports("display", "grid")) {
     var listContainers = document.querySelectorAll('.list-container');
     for (var i = 0; i < listContainers.length; i++) {
-      listContainers[i].classList.add("flex-wrap-container");
+      var container = listContainers[i];
+      container.classList.add("flex-wrap-container");
+      container.classList.remove("list-container");
     }
   }
 
-  window.browserVersion = (function(){
+  function loadCSSVarsPolyfill() {
+    if (CSS.supports && CSS.supports('--a', 0)) return;
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/css-vars-ponyfill';
+    document.head.appendChild(script);
+
+    script.onload = function() {
+      cssVars({
+        rootElement: document,
+        include: 'style#css',
+        onlyLegacy: false,
+        watch: false,
+        onComplete: (function (cssText) {
+          var styleNode = document.createElement('style');
+          styleNode.textContent = cssText;
+          document.head.appendChild(styleNode);
+        }),
+      });
+    }
+  }
+
+  loadCSSVarsPolyfill();
+
+  function removeBlurElementsIfUnsupported() {
+    if (CSS.supports && CSS.supports('filter', 'blur(1px)')) return;
+    var blurs = document.querySelectorAll('.blur');
+    for (var i = 0; i < blurs.length; i++) {
+      blurs[i].remove();
+    }
+  }
+
+  removeBlurElementsIfUnsupported();
+
+
+
+
+  window.browser = (function(){
     var ua= navigator.userAgent;
     var tem; 
     var M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
@@ -25,5 +63,12 @@
       version: M[1]
     };
   })();
+
+  if (window.browser.name == "Firefox" && window.browser.version <= 28) {
+    document.getElementsByClassName("footer")[0].remove();
+    var dv = document.createElement("div");
+    dv.innerText = " ";
+    document.body.appendChild(dv);
+  }
 
 </script>
