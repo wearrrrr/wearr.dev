@@ -72,7 +72,7 @@ const fancyWrapper = document.querySelector('.fancy-wrapper');
 function timelineText() {
   if (!fancyWrapper) return;
   fancyWrapper.style.display = "inline-block";
-  var letters = document.querySelector('.fancy-wrapper .letters');
+  const letters = document.querySelector('.fancy-wrapper .letters');
   letters.innerHTML = letters.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 }
 

@@ -10,7 +10,7 @@
 
   function loadCSSVarsPolyfill() {
     if (CSS.supports && CSS.supports('--a', 0)) return;
-    var script = document.createElement('script');
+    const script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/css-vars-ponyfill';
     document.head.appendChild(script);
 
@@ -33,7 +33,7 @@
 
   function removeBlurElementsIfUnsupported() {
     if (CSS.supports && CSS.supports('filter', 'blur(1px)')) return;
-    var blurs = document.querySelectorAll('.blur');
+    const blurs = document.querySelectorAll('.blur');
     for (var i = 0; i < blurs.length; i++) {
       blurs[i].remove();
     }
@@ -45,7 +45,7 @@
 
 
   window.browser = (function(){
-    var ua= navigator.userAgent;
+    const ua= navigator.userAgent;
     var tem; 
     var M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
     if (/trident/i.test(M[1])){
@@ -66,9 +66,9 @@
 
   if (window.browser.name == "Firefox" && window.browser.version <= 28) {
     document.getElementsByClassName("footer")[0].remove();
-    var dv = document.createElement("div");
-    dv.innerText = " ";
-    document.body.appendChild(dv);
+    const div = document.createElement("div");
+    div.innerText = " ";
+    document.body.appendChild(div);
   }
 
 </script>
