@@ -1,29 +1,11 @@
 ---
-
-import projs from "../json/projects.json"
-import GithubIcon from "./icons/GithubIcon.astro";
-import WebsiteIcon from "./icons/WebsiteIcon.astro";
-import DownloadIcon from "./icons/DownloadIcon.astro";
-
+import projects from "../json/projects.json";
+import Card from "./Card.astro";
 ---
 
-{Object.keys(projs).map((key) => {
-    const project = projs[key];
-    return (
-      <div class={"project " + key}>
-        <div class="project-title">{project.name}</div>
-        <div class="project-description">{project.description}</div>
-        <div class="project-links">
-          {project.links.map((link) => (
-            <a target="_blank" rel="noreferrer noopener" href={link.url} class="project-link">
-                {
-                link.type === "github" ? <GithubIcon /> :
-                link.type === "website" ? <WebsiteIcon/> :
-                link.type === "download" ? <DownloadIcon/> : null
-                }
-            </a>
-          ))}
-        </div>
-      </div>
-    );
-  })}
+{
+    Object.keys(projects).map((key) => {
+        const project = projects[key];
+        return <Card key={key} info={project} />;
+    })
+}

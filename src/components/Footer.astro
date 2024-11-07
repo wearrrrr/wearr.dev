@@ -1,23 +1,27 @@
 <footer class="footer">
+    <p>This site proudly supports Firefox 22! ^w^</p>
     <p>Made with ❤️ and <a target="_blank" rel="noopener noreferrer" class="link" href="https://astro.build">Astro</a> by wearr.</p>
-    <img class="konami" src="/konami.svg"></img>
+    <img class="konami" src="/konami.svg" />
 </footer>
 
 <style>
+    .footer {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        background-color: #121212;
+        padding-bottom: 36px;
+    }
+    p {
+        margin: 0;
+    }
 
-.footer {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    background-color: #121212;
-    padding-bottom: 36px;
-}
-
-.konami {
-    width: 15rem;
-}
+    .konami {
+        margin-top: 1rem;
+        width: 15rem;
+    }
 </style>

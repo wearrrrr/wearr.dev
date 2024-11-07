@@ -1,45 +1,11 @@
 ---
-
-import teams from "../json/teams.json"
-import DownloadIcon from "./icons/DownloadIcon.astro";
-import GithubIcon from "./icons/GithubIcon.astro";
-import WebsiteIcon from "./icons/WebsiteIcon.astro";
-
+import teams from "../json/teams.json";
+import Card from "./Card.astro";
 ---
 
-{Object.keys(teams).map((key) => {
-    const team = teams[key];
-    return(
-        <div class={"team " + key}>
-            <div class="team-title">{team.name}</div>
-            <div class="team-description">{team.description}</div>
-            <div class="team-links">
-            {team.links.map((link) => (
-                <a target="_blank" rel="noreferrer noopener" href={link.url} class="team-link">
-                    {
-                        link.type === "github" ? <GithubIcon /> :
-                        link.type === "website" ? <WebsiteIcon/> :
-                        link.type === "download" ? <DownloadIcon/> : null
-                    }
-                </a>
-            ))}   
-            </div>
-        </div>
-    )
-})}
-
-<style>
-.team {
-    background-color: #272626;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
-    border-radius: 20px;
-    padding: 10px;
-    text-decoration: none;
-    transition: 350ms ease-in-out;
-    animation: fadeIn 800ms forwards;
+{
+    Object.keys(teams).map((key) => {
+        const team = teams[key];
+        return <Card key={key} info={team} />;
+    })
 }
-</style>

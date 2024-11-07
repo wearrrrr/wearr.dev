@@ -3,41 +3,43 @@ import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
 ---
+
 <Layout title="Hire me!">
-<body>
-    <Navbar />
-      <main>
-        <img src="/crt_red_mask.png" class="crt-mask">
-        <h1>Need a programming job done? I can help!</h1>
-        <h2>My primary skills: </h2>
-        <div>
-            <ol class="list-item">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JS</li>
-                <li>Java</li>
-                <li>Bash / Fish shell scripts</li>
-            </ol>
-        </div>
-        <h2>Prices: </h2>
-        <div>
-            <b>These prices are only an estimate. The final price will be based on the amount of effort needed for the project!</b>
-            <b>Example: An incredibly basic HTML document will likely be less than 10$. Whereas a complicated one, and or any frameworks I would potentially need to learn will cost more.</b>
-            <div class="final-price-note"><u><b>You will always receive a final price before work begins!</b></u></div>
-            <ol class="list-item">
-                <li>HTML: $30</li>
-                <li>CSS: $45</li>
-                <li>JS: $60</li>
-                <li>TS: $70</li>
-                <li>Reverse Engineering JS: 100$</li>
-                <li>Bash / Fish shell scripts: $20-30</li>
-            </ol>
-            <div class="contact-msg"><b>Astro, EJS, or any other SSG can be substituted for HTML at a tiny fee :)</b></div>
-            <div class="contact-msg">Unfortunately I can't work for free, but I feel like my prices are fair. If you want to hire me, please contact me <a class="link" href="/contact">here</a>!</div>
-            <div class="job-msg">If you want to collaborate on a project or work together, feel free to contact me! I very well could be interested.</div>
-        </div>
-      </main>
-      <Footer/>
-</body>
-</html>
+    <body>
+        <Navbar />
+        <main>
+            <img src="/crt_red_mask.png" class="crt-mask" />
+            <h1>Need a programming job done? I can help!</h1>
+            <h2>My primary skills:</h2>
+            <div>
+                <ol class="list-item">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JS</li>
+                    <li>Java</li>
+                    <li>Bash / Fish shell scripts</li>
+                </ol>
+            </div>
+            <h2>Prices:</h2>
+            <div>
+                <b>These prices are only an estimate. The final price will be based on the amount of effort needed for the project!</b>
+                <b>Example: An incredibly basic HTML document will likely be less than 10$. Whereas a complicated one, and or any frameworks I would potentially need to learn will cost more.</b>
+                <div class="final-price-note"><u><b>You will always receive a final price before work begins!</b></u></div>
+                <ol class="list-item">
+                    <li>HTML: $30</li>
+                    <li>CSS: $45</li>
+                    <li>JS: $60</li>
+                    <li>TS: $70</li>
+                    <li>Reverse Engineering JS: 100$</li>
+                    <li>Bash / Fish shell scripts: $20-30</li>
+                </ol>
+                <div class="contact-msg"><b>Astro, EJS, or any other SSG can be substituted for HTML at a tiny fee :)</b></div>
+                <div class="contact-msg">
+                    Unfortunately I can't work for free, but I feel like my prices are fair. If you want to hire me, please contact me <a class="link" href="/contact">here</a>!
+                </div>
+                <div class="job-msg">If you want to collaborate on a project or work together, feel free to contact me! I very well could be interested.</div>
+            </div>
+        </main>
+        <Footer />
+    </body>
 </Layout>

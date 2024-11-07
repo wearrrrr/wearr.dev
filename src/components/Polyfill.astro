@@ -1,82 +1,82 @@
 <script is:inline>
-    window.browser = (function(){
-    const ua= navigator.userAgent;
-    var tem; 
-    var M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-    if (/trident/i.test(M[1])){
-        tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
-        return 'IE '+(tem[1] || '');
-    }
-    if (M[1] === 'Chrome'){
-        tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
-        if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
-    }
-    M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
-    if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
-    return {
-      name: M[0],
-      version: M[1]
-    };
-  })();
+    window.browser = (function () {
+        const ua = navigator.userAgent;
+        var tem;
+        var M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+        if (/trident/i.test(M[1])) {
+            tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+            return "IE " + (tem[1] || "");
+        }
+        if (M[1] === "Chrome") {
+            tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
+            if (tem != null) return tem.slice(1).join(" ").replace("OPR", "Opera");
+        }
+        M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, "-?"];
+        if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
+        return {
+            name: M[0],
+            version: M[1],
+        };
+    })();
 
-  if (!CSS.supports("display", "grid")) {
-    var listContainers = document.querySelectorAll('.list-container');
-    for (var i = 0; i < listContainers.length; i++) {
-      var container = listContainers[i];
-      if (window.browser.name == "Firefox" && window.browser.version <= 22) {
-        continue;
-      }
-      container.classList.add("flex-wrap-container");
-      container.classList.remove("list-container");
-    }
-  }
-
-  function loadCSSVarsPolyfill() {
-    if (CSS.supports && CSS.supports('--a', 0)) return;
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/css-vars-ponyfill';
-    document.head.appendChild(script);
-
-    script.onload = function() {
-      cssVars({
-        rootElement: document,
-        include: 'style#css',
-        onlyLegacy: true,
-        watch: false,
-        onComplete: (function (cssText) {
-          console.log("Injecting Rewritten CSS...");
-          var styleNode = document.createElement('style');
-          styleNode.textContent = cssText;
-          document.head.appendChild(styleNode);
-        }),
-      });
-    }
-  }
-
-  loadCSSVarsPolyfill();
-  function removeBlurElementsIfUnsupported() {
-    if (CSS.supports && CSS.supports('filter', 'blur(1px)')) return;
-    Element.prototype.remove = function() {
-        this.parentElement.removeChild(this);
-    }
-    NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-        for(var i = this.length - 1; i >= 0; i--) {
-            if(this[i] && this[i].parentElement) {
-                this[i].parentElement.removeChild(this[i]);
+    if (!CSS.supports("display", "grid")) {
+        var listContainers = document.querySelectorAll(".list-container");
+        for (var i = 0; i < listContainers.length; i++) {
+            var container = listContainers[i];
+            if (window.browser.name == "Firefox" && window.browser.version <= 22) {
+                continue;
             }
+            container.classList.add("flex-wrap-container");
+            container.classList.remove("list-container");
         }
     }
-    var blurs = document.querySelectorAll('.blur');
-    blurs.remove();
-  }
 
-  removeBlurElementsIfUnsupported();
+    function loadCSSVarsPolyfill() {
+        if (CSS.supports && CSS.supports("--a", 0)) return;
+        const script = document.createElement("script");
+        script.src = "https://cdn.jsdelivr.net/npm/css-vars-ponyfill";
+        document.head.appendChild(script);
 
-  if (window.browser.name == "Firefox" && window.browser.version <= 28) {
-    document.getElementsByClassName("footer")[0].remove();
-    const div = document.createElement("div");
-    div.innerText = " ";
-    document.body.appendChild(div);
-  }
+        script.onload = function () {
+            cssVars({
+                rootElement: document,
+                include: "style#css",
+                onlyLegacy: true,
+                watch: false,
+                onComplete: function (cssText) {
+                    console.log("Injecting Rewritten CSS...");
+                    var styleNode = document.createElement("style");
+                    styleNode.textContent = cssText;
+                    document.head.appendChild(styleNode);
+                },
+            });
+        };
+    }
 
+    loadCSSVarsPolyfill();
+    function removeBlurElementsIfUnsupported() {
+        if (CSS.supports && CSS.supports("filter", "blur(1px)")) return;
+        Element.prototype.remove = function () {
+            this.parentElement.removeChild(this);
+        };
+        HTMLCollection.prototype.remove = function () {
+            for (var i = this.length - 1; i >= 0; i--) {
+                if (this[i] && this[i].parentElement) {
+                    this[i].parentElement.removeChild(this[i]);
+                }
+            }
+        };
+        NodeList.prototype.remove = HTMLCollection.prototype.remove;
+        var blurs = document.querySelectorAll(".blur");
+        blurs.remove();
+    }
+
+    removeBlurElementsIfUnsupported();
+
+    if (window.browser.name == "Firefox" && window.browser.version <= 28) {
+        document.getElementsByClassName("footer")[0].remove();
+        const div = document.createElement("div");
+        div.innerText = " ";
+        document.body.appendChild(div);
+    }
 </script>

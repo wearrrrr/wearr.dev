@@ -78,5 +78,15 @@
                 "url": "https://wearrrrr.github.io/Midi-M300/"
             }
         ]
+    },
+    "amiami-scraper": {
+        "name": "AmiAmi Scraper",
+        "description": "A simple NodeJS tool that acts as a POC for bypassing TLS fingerprinting restrictions on AmiAmi's API.",
+        "links": [
+            {
+                "type": "github",
+                "url": "https://github.com/wearrrrr/amiami-scraper"
+            }
+        ]
     }
 }

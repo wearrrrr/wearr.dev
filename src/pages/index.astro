@@ -10,107 +10,110 @@ import { prefetch } from "astro:prefetch";
 ---
 
 <Layout title="Welcome to wearr.dev!">
-<body>
-  <Navbar />
-  <main>
-    <img src="/crt_red_mask.png" class="crt-mask">
-    <div class="main-header-content">
-      <div class="blur blur-left"></div>
-      <h1 class="first-title" id="first-title">Hi. My name is <span class="name-text">wearr</span>, and I'm a <span class="fancy-wrapper"><span class="letters">Web Developer</span></span></h1>
-    </div>
-    <div class="blur blur-right"></div>
-    <div class="main-about-me">
-      About Me:
-      <div class="main-about-me-paragraph">
-          <p>Nice to meet you. I'm Rowan, but I commonly go by wearr online. I currently work with <a class="link" target="_blank" rel="noreferrer noopener" href="https://mercurywork.shop">Mercury Workshop</a>. I am a High School Junior and a web developer.</p>
-          <p>I have been programming for about 2 years now, and I am planning to branch off into Cybersecurity and App development.</p>
+    <body>
+        <Navbar />
+        <main>
+            <img src="/crt_red_mask.png" class="crt-mask" />
+            <div class="main-header-content">
+                <div class="blur blur-left"></div>
+                <h1 class="first-title" id="first-title">
+                    Hi. My name is <span class="name-text">wearr</span>, and I'm a <span class="fancy-wrapper"><span class="letters">Web Developer</span></span>
+                </h1>
+            </div>
+            <div class="blur blur-right"></div>
+            <div class="main-about-me">
+                About Me:
+                <div class="main-about-me-paragraph">
+                    <p>
+                        Nice to meet you. I'm Rowan, but I commonly go by wearr online. I currently work with <a class="link" target="_blank" rel="noreferrer noopener" href="https://mercurywork.shop"
+                            >Mercury Workshop</a
+                        >. I'm a High School Senior and a web developer!
+                    </p>
+                    <p>I have been programming for about 2 years now, and I am planning to branch off into Cybersecurity and App development.</p>
+                    <p>I'm N5-N4 in Japanese, and am an English native!</p>
 
-          <p>I am currently proficient in:</p>
+                    <p>Currently, I am proficient in:</p>
 
-          <ol class="list-item">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JS</li>
-            <li>TS</li>
-            <li>C</li>
-          </ol>
-          
-          <p>I am currently learning:</p>
-          
-          <ol class="list-item">
-            <li>Java</li>
-            <li>C++</li>
-          </ol>
-      </div>
-    </div>
+                    <ol class="list-item">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JS</li>
+                        <li>TS</li>
+                        <li>C</li>
+                    </ol>
 
+                    <p>I am learning:</p>
 
-    <h1>Projects: </h1>
-    <div class="main-projects-content list-container">
-      <ProjectList />
-    </div>
-    
-    <h1>Contributed: </h1>
-    <div class="main-contributed-content list-container">
-      <Contributed />
-    </div>
+                    <ol class="list-item">
+                        <li>Java</li>
+                        <li>C++</li>
+                        <li>Zig</li>
+                    </ol>
+                </div>
+            </div>
 
-    <h1>Teams I've worked with</h1>
-    <div class="main-teams-content list-container">
-        <Teams />
-    </div>
-
-    <h1>Services: </h1>
-    <Services />
-  </main>
-  <Footer/>
-</body>
-</html>
+            <h1>Projects:</h1>
+            <div class="main-projects-content list-container">
+                <ProjectList />
+            </div>
+            <h1>Contributed:</h1>
+            <div class="main-contributed-content list-container">
+                <Contributed />
+            </div>
+            <h1>Teams I've worked with</h1>
+            <div class="main-teams-content list-container">
+                <Teams />
+            </div>
+            <h1>Services:</h1>
+            <Services />
+        </main>
+        <Footer />
+    </body>
 </Layout>
+
 <script is:inline>
-const fancyWrapper = document.querySelector('.fancy-wrapper');
-function timelineText() {
-  if (!fancyWrapper) return;
-  fancyWrapper.style.display = "inline-block";
-  const letters = document.querySelector('.fancy-wrapper .letters');
-  letters.innerHTML = letters.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-}
-
-function playAnimation() {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches === false && localStorage.getItem("retro") == "false") {
-    timelineText();
-  } else {
-    // Check is at least firefox 16, IE 10 or Chrome 43
-    switch (browser.name) {
-      case "Chrome":
-        if (browser.version >= 43) {
-          timelineText();
-        }
-        break;
-      case "Firefox":
-        if (browser.version >= 16) {
-          timelineText();
-        }
-        break;
-      case "IE":
-        if (browser.version >= 10) {
-          timelineText();
-        }
-        break;
-      default:
-        break
+    const fancyWrapper = document.querySelector(".fancy-wrapper");
+    function timelineText() {
+        if (!fancyWrapper) return;
+        fancyWrapper.style.display = "inline-block";
+        const letters = document.querySelector(".fancy-wrapper .letters");
+        letters.innerHTML = letters.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
     }
-    if (!fancyWrapper) {
-      throw new Error("fancyWrapper not found!");
-    };
-    fancyWrapper.style.display = "inline-block"
-  }
-}
 
-playAnimation();
+    function playAnimation() {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches === false && localStorage.getItem("retro") == "false") {
+            timelineText();
+        } else {
+            // Check is at least firefox 16, IE 10 or Chrome 43
+            switch (browser.name) {
+                case "Chrome":
+                    if (browser.version >= 43) {
+                        timelineText();
+                    }
+                    break;
+                case "Firefox":
+                    if (browser.version >= 16) {
+                        timelineText();
+                    }
+                    break;
+                case "IE":
+                    if (browser.version >= 10) {
+                        timelineText();
+                    }
+                    break;
+                default:
+                    break;
+            }
+            if (!fancyWrapper) {
+                throw new Error("fancyWrapper not found!");
+            }
+            fancyWrapper.style.display = "inline-block";
+        }
+    }
 
-document.addEventListener("astro:after-swap", () => {
-  playAnimation();
-});
+    playAnimation();
 
+    document.addEventListener("astro:after-swap", () => {
+        playAnimation();
+    });
 </script>

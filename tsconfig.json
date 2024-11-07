@@ -1,8 +1,8 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "compilerOptions": {
-    "strict": false,
-    "lib": ["DOM", "DOM.Iterable", "ES5", "ES6"],
-    "allowSyntheticDefaultImports": true
-  }  
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "compilerOptions": {
+        "strict": false,
+        "lib": ["DOM", "DOM.Iterable", "ES5", "ES6"],
+        "allowSyntheticDefaultImports": true
+    }
 }

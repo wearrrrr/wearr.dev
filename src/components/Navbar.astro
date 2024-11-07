@@ -1,12 +1,12 @@
 ---
-let filesURL = "https://files.wearr.dev"
+let filesURL = "https://files.wearr.dev";
 ---
 
 <div class="navbar">
     <div class="left">
         <div class="home"><a href="/">Home</a></div>
         <div class="projects"><a href="/projects/">Projects</a></div>
-        <div class="files"><a href={filesURL}>Files</a></div>
+        <div class="files"><a href={filesURL} target="_blank" rel="noreferrer noopener">Files</a></div>
     </div>
     <div class="center">
         <div class="logo">wearr.dev</div>
@@ -19,105 +19,117 @@ let filesURL = "https://files.wearr.dev"
 </div>
 
 <style>
-.navbar {
-  background-color: #1a1919;
-  color: rgba(255, 255, 255, 0.87);
-  width: 100%;
-  min-height: 70px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: sticky;
-}
-.navbar > .left {
-  margin-left: 20px;
-}
-.navbar > .right {
-  margin-right: 20px;
-}
+    .navbar {
+        background-color: #1a1919;
+        color: rgba(255, 255, 255, 0.87);
+        width: 100%;
+        min-height: 70px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: sticky;
+    }
+    .navbar > .left {
+        margin-left: 20px;
+    }
+    .navbar > .right {
+        margin-right: 20px;
+    }
 
-.left, .right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2.5rem;
-  flex-shrink: 1;
-}
+    .left,
+    .right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        flex-shrink: 1;
+    }
 
-@media (max-width: 880px) {
-  .center {
-    display: none;
-  }
-}
+    @media (max-width: 880px) {
+        .center {
+            display: none;
+        }
+    }
 
+    @media (max-width: 800px) {
+        .left,
+        .right {
+            gap: 1.5rem;
+        }
+    }
+    @media (max-width: 690px) {
+        .left,
+        .right {
+            gap: 0.5rem;
+        }
+    }
+    @media (max-width: 618px) {
+        .files,
+        .about {
+            display: none;
+        }
+        .left,
+        .right {
+            gap: 0.25rem;
+        }
+    }
+    @media (max-width: 430px) {
+        .left,
+        .right {
+            gap: 0.15rem;
+        }
+        .left {
+            margin-left: 0px !important;
+        }
+        .right {
+            margin-right: 0px !important;
+        }
+    }
+    @media (max-width: 400px) {
+        .left > * > a,
+        .right > * > a {
+            padding: 5px;
+        }
+    }
 
-@media (max-width: 800px) {
-  .left, .right {
-    gap: 1.5rem;
-  }
-}
-@media (max-width: 690px) {
-  .left, .right {
-    gap: 0.5rem;
-  }
-}
-@media (max-width: 618px) {
-  .files, .about {
-    display: none;
-  }
-  .left, .right {
-    gap: 0.25rem;
-  }
-}
-@media (max-width: 430px) {
-  .left, .right {
-    gap: 0.15rem;
-  }
-  .left {
-    margin-left: 0px !important;
-  }
-  .right {
-    margin-right: 0px !important;
-  }
-}
-@media (max-width: 400px) {
-  .left > * > a, .right > * > a {
-    padding: 5px;
-  }
-}
+    @media (max-width: 380px) {
+        .navbar {
+            font-size: 15px;
+        }
+    }
+    @media (max-width: 360px) {
+        .navbar {
+            font-size: 13px;
+        }
+    }
+    @media (max-width: 340px) {
+        .navbar {
+            font-size: 11px;
+        }
+    }
+    @media (max-width: 300px) {
+        .navbar {
+            font-size: 10px;
+        }
+    }
 
-@media (max-width: 380px) {
-  .navbar {
-    font-size: 15px;
-  }
-}
-@media (max-width: 360px) {
-  .navbar {
-    font-size: 13px;
-  }
-}
-@media (max-width: 340px) {
-  .navbar {
-    font-size: 11px;
-  }
-}
-@media (max-width: 300px) {
-  .navbar {
-    font-size: 10px;
-  }
-}
+    .left > * > a,
+    .right > * > a {
+        text-decoration: none;
+        color: white;
+        padding: 15px;
+    }
 
-.left > * > a, .right > * > a {
-  text-decoration: none;
-  color: white;
-  padding: 15px;
-}
+    .logo {
+        font-weight: 700;
+        transition: 250ms ease-in-out;
+    }
+    .logo:hover {
+        color: var(--text-color);
+    }
 
-.logo {
-  font-weight: 700;
-}
-
-.left *:hover, .right > *:hover {
-  color: #aaaaaa;
-}
+    .left *:hover,
+    .right > *:hover {
+        color: #aaaaaa;
+    }
 </style>
