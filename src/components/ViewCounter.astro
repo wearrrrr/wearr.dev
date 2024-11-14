@@ -3,7 +3,6 @@ export const prerender = false;
 import fs from "node:fs";
 
 let count = parseInt(fs.readFileSync("views.txt", "utf8"));
-console.log(count);
 if (count == 0) {
     count = 1;
 } else {
