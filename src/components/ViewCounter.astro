@@ -1,0 +1,41 @@
+---
+export const prerender = false;
+import fs from "node:fs";
+
+let count = parseInt(fs.readFileSync("views.txt", "utf8"));
+console.log(count);
+if (count == 0) {
+    count = 1;
+} else {
+    count++;
+}
+fs.writeFileSync("views.txt", count.toString());
+
+// Returns count + th, st, nd, rd
+let getNumberAndEnding = (number) => {
+    const numberStr = number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    if (number % 100 >= 11 && number % 100 <= 13) {
+        return numberStr + "th";
+    }
+    switch (number % 10) {
+        case 1:
+            return numberStr + "st";
+        case 2:
+            return numberStr + "nd";
+        case 3:
+            return numberStr + "rd";
+        default:
+            return numberStr + "th";
+    }
+};
+---
+
+<div>
+    <p>You are the {getNumberAndEnding(count)} visitor!</p>
+</div>
+
+<style>
+    p {
+        font-weight: bold;
+    }
+</style>

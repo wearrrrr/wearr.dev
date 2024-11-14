@@ -10,5 +10,9 @@
         "astro": "^4.16.12",
         "prettier": "^3.3.3",
         "prettier-plugin-astro": "^0.14.1"
+    },
+    "dependencies": {
+        "@astrojs/node": "^8.3.4",
+        "@types/node": "^22.9.0"
     }
 }

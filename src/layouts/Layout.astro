@@ -166,37 +166,6 @@ import Polyfill from "../components/Polyfill.astro";
             .link {
                 color: var(--text-color);
             }
-            .blur {
-                position: absolute;
-                background-color: rgb(186, 91, 91);
-                filter: blur(60px);
-                z-index: -100;
-                border-radius: 100%;
-            }
-            .blur-left {
-                width: 120px;
-                height: 120px;
-                top: 15%;
-                left: 12%;
-            }
-            .blur-right {
-                width: 250px;
-                height: 250px;
-                top: 60%;
-                left: 70%;
-            }
-
-            @media (max-width: 500px) {
-                .blur-right {
-                    left: 50%;
-                }
-            }
-
-            @media (max-width: 345px) {
-                .blur-right {
-                    left: 40%;
-                }
-            }
 
             .project {
                 background-color: #272626;
@@ -324,6 +293,29 @@ import Polyfill from "../components/Polyfill.astro";
                 transform: scale(0); /* Initial scale */
                 animation: scale-up 750ms cubic-bezier(0.5, 2, 0, 0.7) forwards;
             }
+
+            .rainbow {
+                background: repeating-linear-gradient(
+                    to right,
+                    #9466ff, #00c3ff, #d0ff00, #ff0000, #9466ff
+                );
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                animation: rainbow_animation 10s linear infinite;
+                background-size: 400% 100%;
+            }
+
+            @keyframes rainbow_animation {
+                0% {
+                    background-position: 0% 0;
+                }
+                100% {
+                    background-position: 400% 0;
+                }
+            }
+
+
 
             @keyframes scale-up {
                 0% {
@@ -681,7 +673,6 @@ import Polyfill from "../components/Polyfill.astro";
     let current = 0;
 
     const checkKCode = function (e: KeyboardEvent) {
-        console.log(e.key);
         if (e.key === pattern[current]) {
             current++;
             if (current === pattern.length) {

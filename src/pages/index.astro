@@ -6,7 +6,7 @@ import Teams from "../components/Teams.astro";
 import Footer from "../components/Footer.astro";
 import Services from "../components/Services.astro";
 import Contributed from "../components/Contributed.astro";
-import { prefetch } from "astro:prefetch";
+import ViewCounter from "../components/ViewCounter.astro";
 ---
 
 <Layout title="Welcome to wearr.dev!">
@@ -15,12 +15,10 @@ import { prefetch } from "astro:prefetch";
         <main>
             <img src="/crt_red_mask.png" class="crt-mask" />
             <div class="main-header-content">
-                <div class="blur blur-left"></div>
                 <h1 class="first-title" id="first-title">
-                    Hi. My name is <span class="name-text">wearr</span>, and I'm a <span class="fancy-wrapper"><span class="letters">Web Developer</span></span>
+                    Hi! I'm wearr, and welcome to my little corner of the <div class="fancy-wrapper rainbow">Internet!</span>
                 </h1>
             </div>
-            <div class="blur blur-right"></div>
             <div class="main-about-me">
                 About Me:
                 <div class="main-about-me-paragraph">
@@ -51,7 +49,7 @@ import { prefetch } from "astro:prefetch";
                     </ol>
                 </div>
             </div>
-
+            <ViewCounter />
             <h1>Projects:</h1>
             <div class="main-projects-content list-container">
                 <ProjectList />
@@ -76,8 +74,6 @@ import { prefetch } from "astro:prefetch";
     function timelineText() {
         if (!fancyWrapper) return;
         fancyWrapper.style.display = "inline-block";
-        const letters = document.querySelector(".fancy-wrapper .letters");
-        letters.innerHTML = letters.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
     }
 
     function playAnimation() {
