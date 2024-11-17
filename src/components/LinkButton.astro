@@ -1,0 +1,18 @@
+---
+type Props = {
+    src: string;
+    alt?: string;
+    link?: string;
+}
+
+const { src, alt, link } = Astro.props;
+---
+
+{link ? <a href={link} target="_blank" rel="noopener noreferrer"><img width="88px" height="31px" src={src} alt={alt} /></a> : <img src={src} alt={alt} />}
+
+<style>
+    img {
+        image-rendering: pixelated;
+        image-rendering: -webkit-optimize-contrast;
+    }
+</style>
