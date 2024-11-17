@@ -92,25 +92,19 @@ import Polyfill from "../components/Polyfill.astro";
             body {
                 margin: 0;
                 padding: 0;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                height: 100vh;
-                letter-spacing: 0.1rem !important;
                 background-color: rgb(13, 14, 14);
                 background-image: linear-gradient(to right, rgb(28, 30, 31) 0%, rgb(8, 9, 9) 100%);
             }
 
             main {
                 width: 80%;
-                margin: 0 auto;
-                margin-top: 2rem;
+                margin: 2rem auto 0;
                 padding: 1rem;
                 border-radius: 16px;
                 border: 3px solid rgb(84, 91, 95);
                 background-color: rgba(46, 49, 51, 0.2);
                 box-shadow: rgba(0, 0, 0, 0.15) 12px 12px 0px 0px;
-                position: relative;
+                overflow: hidden;
             }
 
             .main-header-content {
