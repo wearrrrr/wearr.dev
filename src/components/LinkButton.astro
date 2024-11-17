@@ -8,7 +8,7 @@ type Props = {
 const { src, alt, link } = Astro.props;
 ---
 
-{link ? <a href={link} target="_blank" rel="noopener noreferrer"><img width="88px" height="31px" src={src} alt={alt} /></a> : <img src={src} alt={alt} />}
+{link ? <a href={link} target="_blank" rel="noopener noreferrer"><img width="88px" height="31px" src={src} alt={alt} loading="lazy" /></a> : <img src={src} alt={alt} loading="lazy" />}
 
 <style>
     img {
