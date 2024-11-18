@@ -22,17 +22,17 @@ import Polyfill from "../components/Polyfill.astro";
     </head>
     <body>
         <slot />
-        <script>
-            if (localStorage.getItem("retro") === "true") {
+        <Polyfill />
+        <script is:inline>
+            if (localStorage.getItem("retro") == "true") {
                 document.body.classList.add("retro");
             }
             document.addEventListener("astro:after-swap", function () {
-                if (localStorage.getItem("retro") === "true") {
+                if (localStorage.getItem("retro") == "true") {
                     document.body.classList.add("retro");
                 }
             });
         </script>
-        <Polyfill />
         <style is:global id="css" is:inline>
             @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
             *,
@@ -78,8 +78,7 @@ import Polyfill from "../components/Polyfill.astro";
                 }
             }
 
-            body,
-            body.transitioning {
+            body {
                 opacity: 0;
                 animation: fadeIn 0.5s forwards;
                 -webkit-animation: fadeIn 0.5s forwards;
@@ -192,20 +191,20 @@ import Polyfill from "../components/Polyfill.astro";
                 display: flex;
                 display: -webkit-flex;
                 flex-direction: column;
-                -webkit-flex-direction: column;
                 justify-content: space-around;
-                -webkit-justify-content: space-around;
                 align-items: center;
-                -webkit-align-items: center;
                 text-align: center;
                 border-radius: 20px;
                 padding: 10px;
                 padding-bottom: 5px;
                 text-decoration: none;
                 transition: 200ms ease-out;
-                -webkit-transition: 200ms ease-out;
                 min-height: 125px;
                 animation: fadeIn 600ms forwards;
+                -webkit-flex-direction: column;
+                -webkit-justify-content: space-around;
+                -webkit-align-items: center;
+                -webkit-transition: 200ms ease-out;
                 -webkit-animation: fadeIn 600ms forwards;
             }
             .project:hover {
@@ -325,88 +324,27 @@ import Polyfill from "../components/Polyfill.astro";
                 }
             }
 
-            @keyframes scale-up {
-                0% {
-                    transform: scale(0);
-                }
-                100% {
-                    transform: scale(1);
-                }
-            }
-
-            .letter:nth-child(1) {
-                animation-delay: 45ms;
-            }
-            .letter:nth-child(2) {
-                animation-delay: 90ms;
-            }
-            .letter:nth-child(3) {
-                animation-delay: 135ms;
-            }
-            .letter:nth-child(4) {
-                animation-delay: 180ms;
-            }
-            .letter:nth-child(5) {
-                animation-delay: 225ms;
-            }
-            .letter:nth-child(6) {
-                animation-delay: 270ms;
-            }
-            .letter:nth-child(7) {
-                animation-delay: 315ms;
-            }
-            .letter:nth-child(8) {
-                animation-delay: 360ms;
-            }
-            .letter:nth-child(9) {
-                animation-delay: 405ms;
-            }
-            .letter:nth-child(10) {
-                animation-delay: 450ms;
-            }
-            .letter:nth-child(11) {
-                animation-delay: 495ms;
-            }
-            .letter:nth-child(12) {
-                animation-delay: 540ms;
-            }
-
-            .main-header-content > h1 > .ml9 {
-                font-weight: 800;
-            }
-
-            @keyframes transitionToRetro {
-                0% {
-                    filter: blur(0);
-                }
-                25% {
-                    filter: blur(0.5px);
-                }
-                50% {
-                    filter: blur(1px);
-                }
-                75% {
-                    filter: blur(1.5px);
-                }
-                100% {
-                    filter: blur(2px);
-                }
-            }
-
-            body.transitioning {
-                animation: transitionToRetro 0.25s forwards;
-            }
-
             .retro {
                 background: #111;
                 color: #eee !important;
                 line-height: 1.25;
-                animation-duration: 0.01s;
-                animation-name: textflicker;
-                animation-iteration-count: infinite;
-                animation-direction: alternate;
+
+                animation: textflicker 0.01s infinite alternate;
+                -webkit-animation: textflicker 0.01s infinite alternate;
             }
 
+            @-webkit-keyframes textflicker {
+                from {
+                    text-shadow:
+                        1px 0 0 #ea36af,
+                        -1px 0 0 #9df795;
+                }
+                to {
+                    text-shadow:
+                        2px 0.5px 2px #ea36af,
+                        -1px -0.5px 1px #75fa69;
+                }
+            }
             @keyframes textflicker {
                 from {
                     text-shadow:
@@ -671,34 +609,40 @@ import Polyfill from "../components/Polyfill.astro";
                 left: 0;
                 width: 100%;
                 height: calc(100% + 1px);
+                height: -webkit-calc(100% + 1px);
             }
         </style>
     </body>
 </html>
 
-<script>
-    const pattern = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a", "Enter"];
-    let current = 0;
+<script is:inline>
+    const patternKey = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a", "Enter"];
+    const patternKeyIdentifier = ["Up", "Up", "Down", "Down", "Left", "Right", "Left", "Right", "U+0042", "U+0041", "Enter"];
+    var current = 0;
 
-    const checkKCode = function (e: KeyboardEvent) {
-        if (e.key === pattern[current]) {
+    var patternToUse = patternKey;
+
+    // Chrome 53 and below use keyIdentifier instead of key
+    if (browser.name == "Chrome" && browser.version <= 53) {
+        patternToUse = patternKeyIdentifier;
+    }
+
+    const checkKCode = function (ev) {
+        const key = ev.key || ev.keyIdentifier;
+        if (key === patternToUse[current]) {
             current++;
-            if (current === pattern.length) {
+            if (current === patternToUse.length) {
                 // Activate retro mode
                 if (localStorage.getItem("retro") == "true") {
                     localStorage.setItem("retro", "false");
-                    document.body.classList.add("transitioning");
-                    setTimeout(() => {
+                    setTimeout(function () {
                         document.body.classList.toggle("retro");
-                        document.body.classList.remove("transitioning");
                     }, 250);
                     return;
                 }
                 localStorage.setItem("retro", "true");
-                document.body.classList.add("transitioning");
-                setTimeout(() => {
+                setTimeout(function () {
                     document.body.classList.toggle("retro");
-                    document.body.classList.remove("transitioning");
                 }, 250);
 
                 current = 0;
@@ -708,11 +652,17 @@ import Polyfill from "../components/Polyfill.astro";
         }
     };
 
-    document.addEventListener("keydown", checkKCode);
+    document.addEventListener("keydown", function (e) {
+        checkKCode(e);
+    });
     document.addEventListener("astro:before-swap", function () {
-        document.removeEventListener("keydown", checkKCode);
+        document.removeEventListener("keydown", function (e) {
+            checkKCode(e);
+        });
     });
     document.addEventListener("astro:after-swap", function () {
-        document.addEventListener("keydown", checkKCode);
+        document.addEventListener("keydown", function (e) {
+            checkKCode(e);
+        });
     });
 </script>

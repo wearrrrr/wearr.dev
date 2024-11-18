@@ -51,4 +51,11 @@
             rainbow.style.color = "rgb(254, 112, 112)";
         }
     }
+
+    // Disable arrow keys for navigation, as they are used for the Konami code
+    window.addEventListener("keydown", function(e) {
+        if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+            e.preventDefault();
+        }
+}, false);
 </script>
