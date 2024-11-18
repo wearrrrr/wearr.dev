@@ -9,7 +9,7 @@ import ButtonCollection from "./ButtonCollection.astro";
 <Layout title="Welcome to wearr.dev!">
     <body>
         <Navbar />
-        <main>
+        <div class="main">
             <img src="/crt_red_mask.png" class="crt-mask" />
             <div class="main-header-content">
                 <h1 class="first-title" id="first-title">
@@ -47,46 +47,16 @@ import ButtonCollection from "./ButtonCollection.astro";
             </div>
             <ViewCounter />
             <ButtonCollection />
-        </main>
+        </div>
         <Footer />
     </body>
 </Layout>
 
 <script is:inline>
-    const fancyWrapper = document.querySelector(".fancy-wrapper");
-    function timelineText() {
-        if (!fancyWrapper) return;
-        fancyWrapper.style.display = "inline-block";
-    }
-
     function playAnimation() {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches === false && localStorage.getItem("retro") == "false") {
-            timelineText();
-        } else {
-            // Check is at least firefox 16, IE 10 or Chrome 43
-            switch (browser.name) {
-                case "Chrome":
-                    if (browser.version >= 43) {
-                        timelineText();
-                    }
-                    break;
-                case "Firefox":
-                    if (browser.version >= 16) {
-                        timelineText();
-                    }
-                    break;
-                case "IE":
-                    if (browser.version >= 10) {
-                        timelineText();
-                    }
-                    break;
-                default:
-                    break;
-            }
-            if (!fancyWrapper) {
-                throw new Error("fancyWrapper not found!");
-            }
-            fancyWrapper.style.display = "inline-block";
+        if (localStorage.getItem("retro") == "false") {
+            if (!document.querySelector(".fancy-wrapper")) return;
+            document.querySelector(".fancy-wrapper").style.display = "inline-block";
         }
     }
 

@@ -7,7 +7,7 @@ const config = {
     bracketSameLine: true,
     arrowParens: "always",
     plugins: ["prettier-plugin-astro"],
-    printWidth: 200,
+    printWidth: 400,
     singleQuote: false,
 };
 

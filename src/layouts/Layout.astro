@@ -35,11 +35,6 @@ import Polyfill from "../components/Polyfill.astro";
         <Polyfill />
         <style is:global id="css" is:inline>
             @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
-
-            :root {
-                --color: #fff;
-                --text-color: rgb(254, 112, 112);
-            }
             *,
             *::before,
             *::after {
@@ -52,17 +47,17 @@ import Polyfill from "../components/Polyfill.astro";
             h1,
             h2,
             h4 {
-                color: var(--text-color);
+                color: rgb(254, 112, 112);
             }
 
             h3,
             p,
             div {
-                color: var(--color);
+                color: #fff;
             }
 
             .logo {
-                color: var(--color);
+                color: #fff;
             }
 
             @keyframes fadeIn {
@@ -103,10 +98,18 @@ import Polyfill from "../components/Polyfill.astro";
                 margin: 0;
                 padding: 0;
                 background-color: rgb(13, 14, 14);
-                background-image: linear-gradient(to right, rgb(28, 30, 31) 0%, rgb(8, 9, 9) 100%);
+                background-image: -webkit-linear-gradient(360deg, rgb(28, 30, 31) 0%, rgb(8, 9, 9) 100%);
+                height: 100vh;
             }
 
-            main {
+            @supports (background-image: linear-gradient(to right, rgb(28, 30, 31) 0%, rgb(8, 9, 9) 100%)) {
+                body {
+                    background-image: linear-gradient(to right, rgb(28, 30, 31) 0%, rgb(8, 9, 9) 100%);
+                }
+
+            }
+
+            .main {
                 width: 80%;
                 margin: 2rem auto 0;
                 padding: 1rem;
@@ -121,17 +124,20 @@ import Polyfill from "../components/Polyfill.astro";
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                display: -webkit-flex;
+                -webkit-flex-direction: column;
+                -webkit-justify-content: center;
                 margin-bottom: 2rem;
             }
 
             .main-header-content > h1 {
                 font-size: 36px;
-                color: var(--text-color);
+                color: rgb(254, 112, 112);
                 margin: 0;
                 font-weight: 500;
             }
             .main-header-content > h1 > .name-text {
-                color: var(--text-color);
+                color: rgb(254, 112, 112);
                 text-decoration: underline;
             }
 
@@ -141,7 +147,7 @@ import Polyfill from "../components/Polyfill.astro";
 
             .main-about-me-paragraph {
                 font-size: 18px;
-                color: var(--color);
+                color: #fff;
             }
 
             .list-item {
@@ -154,12 +160,16 @@ import Polyfill from "../components/Polyfill.astro";
 
             .flex-wrap-container {
                 display: flex;
+                display: -webkit-flex;
                 flex-wrap: wrap;
+                -webkit-flex-wrap: wrap;
                 justify-content: center;
+                -webkit-justify-content: center;
             }
 
             .flex-wrap-container > * {
                 flex: 1 1 300px;
+                -webkit-flex: 1 1 300px;
                 min-width: 300px;
                 margin: 5px;
             }
@@ -175,23 +185,29 @@ import Polyfill from "../components/Polyfill.astro";
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
             .link {
-                color: var(--text-color);
+                color: rgb(254, 112, 112);
             }
 
             .project {
                 background-color: rgb(40, 42, 44);
                 display: flex;
+                display: -webkit-flex;
                 flex-direction: column;
+                -webkit-flex-direction: column;
                 justify-content: space-around;
+                -webkit-justify-content: space-around;
                 align-items: center;
+                -webkit-align-items: center;
                 text-align: center;
                 border-radius: 20px;
                 padding: 10px;
                 padding-bottom: 5px;
                 text-decoration: none;
                 transition: 200ms ease-out;
+                -webkit-transition: 200ms ease-out;
                 min-height: 125px;
                 animation: fadeIn 600ms forwards;
+                -webkit-animation: fadeIn 600ms forwards;
             }
             .project:hover {
                 transform: scale(1.02);
@@ -199,7 +215,7 @@ import Polyfill from "../components/Polyfill.astro";
             }
             .project-title {
                 font-size: 24px;
-                color: var(--text-color);
+                color: rgb(254, 112, 112);
             }
             .project-description {
                 color: white;
@@ -208,8 +224,11 @@ import Polyfill from "../components/Polyfill.astro";
             .project-links,
             .team-links {
                 display: flex;
+                display: -webkit-flex;
                 justify-content: center;
+                -webkit-justify-content: center;
                 gap: 0.5rem;
+                -webkit-gap: 0.5rem;
             }
 
             .project-link,
@@ -218,6 +237,7 @@ import Polyfill from "../components/Polyfill.astro";
                 text-decoration: none;
                 font-size: 1.5rem;
                 height: 32px;
+                width: 32px;
             }
 
             .team-link {
@@ -233,7 +253,7 @@ import Polyfill from "../components/Polyfill.astro";
             }
             .team-title {
                 font-size: 24px;
-                color: var(--text-color);
+                color: rgb(254, 112, 112);
             }
             .team-description {
                 color: white;

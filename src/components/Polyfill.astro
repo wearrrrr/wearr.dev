@@ -19,6 +19,19 @@
         };
     })();
 
+    if (!CSS) {
+        var CSS = {};
+        console.log("Polyfilling CSS.supports...");
+        CSS.supports = function (property, value) {
+            var element = document.createElement("span");
+            if ("style" in element) {
+                element.style[property] = value;
+                return element.style[property] === value;
+            }
+            return false;
+        };
+    }
+
     if (!CSS.supports("display", "grid")) {
         var listContainers = document.querySelectorAll(".list-container");
         for (var i = 0; i < listContainers.length; i++) {
@@ -30,30 +43,6 @@
             container.classList.remove("list-container");
         }
     }
-
-    function loadCSSVarsPolyfill() {
-        if (CSS.supports && CSS.supports("--test", 0)) return;
-        const script = document.createElement("script");
-        script.src = "/css-vars-ponyfill.js";
-        document.head.appendChild(script);
-
-        script.onload = function () {
-            cssVars({
-                rootElement: document,
-                include: "style#css",
-                onlyLegacy: true,
-                watch: false,
-                onComplete: function (cssText) {
-                    console.log("Injecting Rewritten CSS...");
-                    var styleNode = document.createElement("style");
-                    styleNode.textContent = cssText;
-                    document.head.appendChild(styleNode);
-                },
-            });
-        };
-    }
-
-    loadCSSVarsPolyfill();
 
     if (!CSS.supports("background-clip", "text")) {
         const rainbow = document.getElementsByClassName("rainbow")[0];
