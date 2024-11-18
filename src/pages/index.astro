@@ -92,7 +92,7 @@ import ButtonCollection from "./ButtonCollection.astro";
 
     playAnimation();
 
-    document.addEventListener("astro:after-swap", () => {
+    document.addEventListener("astro:after-swap", function () {
         playAnimation();
     });
 </script>

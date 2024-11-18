@@ -34,7 +34,7 @@
     function loadCSSVarsPolyfill() {
         if (CSS.supports && CSS.supports("--test", 0)) return;
         const script = document.createElement("script");
-        script.src = "https://cdn.jsdelivr.net/npm/css-vars-ponyfill";
+        script.src = "/css-vars-ponyfill.js";
         document.head.appendChild(script);
 
         script.onload = function () {
@@ -57,7 +57,9 @@
 
     if (!CSS.supports("background-clip", "text")) {
         const rainbow = document.getElementsByClassName("rainbow")[0];
-        rainbow.style.background = "transparent"
-        rainbow.style.color = "rgb(254, 112, 112)"
+        if (rainbow) {
+            rainbow.style.background = "transparent"
+            rainbow.style.color = "rgb(254, 112, 112)"
+        }
     }
 </script>

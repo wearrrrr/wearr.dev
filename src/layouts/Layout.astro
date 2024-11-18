@@ -26,7 +26,7 @@ import Polyfill from "../components/Polyfill.astro";
             if (localStorage.getItem("retro") === "true") {
                 document.body.classList.add("retro");
             }
-            document.addEventListener("astro:after-swap", () => {
+            document.addEventListener("astro:after-swap", function() {
                 if (localStorage.getItem("retro") === "true") {
                     document.body.classList.add("retro");
                 }
@@ -74,10 +74,20 @@ import Polyfill from "../components/Polyfill.astro";
                 }
             }
 
+            @-webkit-keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
             body,
             body.transitioning {
                 opacity: 0;
                 animation: fadeIn 0.5s forwards;
+                -webkit-animation: fadeIn 0.5s forwards;
             }
 
             body.retro {
@@ -702,10 +712,10 @@ import Polyfill from "../components/Polyfill.astro";
     };
 
     document.addEventListener("keydown", checkKCode);
-    document.addEventListener("astro:before-swap", () => {
+    document.addEventListener("astro:before-swap", function () {
         document.removeEventListener("keydown", checkKCode);
     });
-    document.addEventListener("astro:after-swap", () => {
+    document.addEventListener("astro:after-swap", function () {
         document.addEventListener("keydown", checkKCode);
     });
 </script>
