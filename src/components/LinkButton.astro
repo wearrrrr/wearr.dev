@@ -3,12 +3,20 @@ type Props = {
     src: string;
     alt?: string;
     link?: string;
-}
+};
 
 const { src, alt, link } = Astro.props;
 ---
 
-{link ? <a href={link} target="_blank" rel="noopener noreferrer"><img width="88px" height="31px" src={src} alt={alt} loading="lazy" /></a> : <img src={src} alt={alt} loading="lazy" />}
+{
+    link ? (
+        <a href={link} target="_blank" rel="noopener noreferrer">
+            <img width="88px" height="31px" src={src} alt={alt} loading="lazy" />
+        </a>
+    ) : (
+        <img src={src} alt={alt} loading="lazy" />
+    )
+}
 
 <style>
     img {

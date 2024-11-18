@@ -26,7 +26,7 @@ import Polyfill from "../components/Polyfill.astro";
             if (localStorage.getItem("retro") === "true") {
                 document.body.classList.add("retro");
             }
-            document.addEventListener("astro:after-swap", function() {
+            document.addEventListener("astro:after-swap", function () {
                 if (localStorage.getItem("retro") === "true") {
                     document.body.classList.add("retro");
                 }
@@ -106,7 +106,6 @@ import Polyfill from "../components/Polyfill.astro";
                 body {
                     background-image: linear-gradient(to right, rgb(28, 30, 31) 0%, rgb(8, 9, 9) 100%);
                 }
-
             }
 
             .main {
@@ -294,6 +293,7 @@ import Polyfill from "../components/Polyfill.astro";
                 text-align: left;
                 padding: 8px;
             }
+
             @keyframes fadeIn {
                 from {
                     opacity: 0;
@@ -304,32 +304,11 @@ import Polyfill from "../components/Polyfill.astro";
             }
 
             .fancy-wrapper {
-                position: relative;
-                font-weight: 700 !important;
-                display: none;
-            }
-
-            .letters {
-                overflow: hidden;
-                white-space: nowrap;
-            }
-
-            .fancy-wrapper .letter {
-                transform-origin: 50% 100%;
-                display: inline-block;
-            }
-
-            .letter {
-                display: inline-block; /* Necessary for scaling individual letters */
-                transform: scale(0); /* Initial scale */
-                animation: scale-up 750ms cubic-bezier(0.5, 2, 0, 0.7) forwards;
+                font-weight: bold;
             }
 
             .rainbow {
-                background: repeating-linear-gradient(
-                    to right,
-                    #9466ff, #00c3ff, #d0ff00, #ff0000, #9466ff
-                );
+                background: repeating-linear-gradient(to right, #9466ff, #00c3ff, #d0ff00, #ff0000, #9466ff);
                 -webkit-background-clip: text;
                 background-clip: text;
                 color: transparent;
@@ -345,8 +324,6 @@ import Polyfill from "../components/Polyfill.astro";
                     background-position: 400% 0;
                 }
             }
-
-
 
             @keyframes scale-up {
                 0% {
