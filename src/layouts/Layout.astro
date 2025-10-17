@@ -33,6 +33,90 @@ import Polyfill from "../components/Polyfill.astro";
                 }
             });
         </script>
+        <script is:inline>
+            // Devtools detection for an easter egg
+            const devtools = {
+                isOpen: false,
+                orientation: null,
+                callback: null,
+                check() {
+                    if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
+                        this.isOpen = true;
+                        this.orientation = window.outerWidth > window.outerHeight ? "vertical" : "horizontal";
+                    } else {
+                        this.isOpen = false;
+                        this.orientation = null;
+                    }
+                    if (this.callback) {
+                        this.callback(this.isOpen, this.orientation);
+                    }
+                },
+                init(callback) {
+                    this.callback = callback;
+                    if (localStorage.getItem("greedy") == "true") {
+                        return;
+                    }
+                    this.check();
+                    intvcheck = setInterval(() => {
+                        this.check();
+                    }, 1000);
+                },
+            };
+
+            const doc = `
+                <style>
+                    body {
+                        padding: 0;
+                        margin: 0;
+                        background-color: #000;
+                        color: #fff;
+                    }    
+                </style>
+                <h3 style="text-align: center; margin-top: 2rem;">the greed of man catches up to us all</h3>
+                <h4 style="text-align: center;">easter egg #2 unlocked</h4>
+                <h4 style="text-align: center;">this will not trigger again :)</h4>
+                <h2 style="text-align: center;" onclick="window.location.reload();"><button>Go back</button></h2>
+            `
+
+            let intv;
+            let timer = 0;
+            let triggered = false;
+            let onlyonce = true;
+            devtools.init((isOpen, orientation) => {
+                if (isOpen) {
+                    console.clear();
+                    console.log("%cWhere are you going?", "font-size: 1rem; color: #fff;");
+                    console.log("%cYou have 5 seconds to close devtools.", "font-size: 1rem; color: #fff;");
+                    console.log("%cIf you don't, you'll be stuck here", "font-size: 1rem; color: #fff;");
+                    if (timer >= 5) {
+                        timer = 5;
+                        clearInterval(intv);
+                    }
+                    if (onlyonce) {
+                        setInterval(() => {
+                            timer++;
+                        }, 1000);
+                        onlyonce = false;
+                    }
+
+                    if (!triggered) {
+                        console.log("%c" + timer, "font-size: 1rem; color: #fff;");
+                    } else {
+                        console.log("%cGreed catches up to us all", "font-size: 1rem; color: #fff;");
+                    }
+                    intv = setTimeout(() => {
+                        if (timer >= 5 && !triggered) {
+                            document.body.innerHTML = doc;
+                            triggered = true;
+                            localStorage.setItem("greedy", "true");
+                        }
+                    }, 5000);
+                } else {
+                    console.log("Devtools is closed");
+                    clearInterval(intv);
+                }
+            });
+        </script>
         <style is:global id="css" is:inline>
             @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
             *,
