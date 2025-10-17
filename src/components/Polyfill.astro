@@ -44,7 +44,7 @@
         }
     }
 
-    if (!CSS.supports("background-clip", "text")) {
+    if (!CSS.supports("background-clip", "text") || window.browser.name == "Firefox" && window.browser.version < 22) {
         const rainbow = document.getElementsByClassName("rainbow")[0];
         if (rainbow) {
             rainbow.style.background = "transparent";
