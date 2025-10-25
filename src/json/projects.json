@@ -1,22 +1,12 @@
 {
-    "alu": {
-        "name": "Alu",
-        "description": "Alu is a simple and efficient proxy frontend using the Wisp protocol.",
+    "resource-dragon": {
+        "name": "Resource Dragon",
+        "description": "ResourceDragon is a resource browser for proprietary game archives, written in C++",
         "links": [
             {
                 "type": "github",
-                "url": "https://github.com/titaniumnetwork-dev/Alu",
+                "url": "https://github.com/wearrrrr/ResourceDragon",
                 "icon": "fa-brands fa-github"
-            }
-        ]
-    },
-    "ddlc-wasm": {
-        "name": "DDLC.wasm",
-        "description": "A basic port of Doki Doki Literature Club to WebAssembly. Uses Ren'Py Web.",
-        "links": [
-            {
-                "type": "website",
-                "url": "https://ddlc.wearr.dev"
             }
         ]
     },
@@ -27,6 +17,17 @@
             {
                 "type": "github",
                 "url": "https://github.com/happyhavoc/th06",
+                "icon": "fa-brands fa-github"
+            }
+        ]
+    },
+    "alu": {
+        "name": "Alu",
+        "description": "Alu is a simple and efficient proxy frontend using the Wisp protocol.",
+        "links": [
+            {
+                "type": "github",
+                "url": "https://github.com/titaniumnetwork-dev/Alu",
                 "icon": "fa-brands fa-github"
             }
         ]
